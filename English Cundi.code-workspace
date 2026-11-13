@@ -27,7 +27,7 @@
         "name": "Abrir English Cundi (local)",
         "type": "debugpy",
         "request": "launch",
-        "program": "${workspaceFolder}/app.py",
+        "program": "${workspaceFolder}/pagina-web/app.py",
         "cwd": "${workspaceFolder}",
         "python": "${workspaceFolder}/venv/Scripts/python.exe",
         "console": "integratedTerminal"

@@ -12,7 +12,7 @@ Cómo funciona:
 Telegram llama a /telegram/webhook (no hace falta un proceso corriendo siempre,
 por eso sirve en la cuenta gratis de PythonAnywhere).
 
-La configuración (token del bot, etc.) vive en datos/telegram.json y la crea
+La configuración (token del bot, etc.) vive en comunicacion-chatbot/telegram.json y la crea
 configurar_telegram.py. Ese archivo NO se comparte ni se sube a GitHub.
 
 Autor: David Estiven Sánchez Yomayuza
@@ -38,10 +38,10 @@ from datetime import datetime, timedelta, timezone
 
 from flask import Blueprint, current_app, request, session
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DATOS_DIR = os.path.join(BASE_DIR, "datos")
-DB_PATH = os.path.join(DATOS_DIR, "usuarios.db")
-CONFIG_PATH = os.path.join(DATOS_DIR, "telegram.json")
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))      # comunicacion-chatbot/
+RAIZ = os.path.dirname(BASE_DIR)
+DB_PATH = os.path.join(RAIZ, "base-de-datos", "usuarios.db")
+CONFIG_PATH = os.path.join(BASE_DIR, "telegram.json")       # privado, no va a GitHub
 HORA_COLOMBIA = timezone(timedelta(hours=-5))
 
 soporte = Blueprint("soporte", __name__)
@@ -190,7 +190,7 @@ def cargar_config():
 
 
 def guardar_config(config):
-    os.makedirs(DATOS_DIR, exist_ok=True)
+    os.makedirs(BASE_DIR, exist_ok=True)
     with open(CONFIG_PATH, "w", encoding="utf-8") as archivo:
         json.dump(config, archivo, indent=2, ensure_ascii=False)
 
@@ -223,7 +223,7 @@ def api(metodo, **datos):
     Nunca escribe el token en el log."""
     token = cargar_config().get("token")
     if not token:
-        log.warning("Telegram sin configurar: falta datos/telegram.json")
+        log.warning("Telegram sin configurar: falta comunicacion-chatbot/telegram.json")
         return None
     cuerpo = json.dumps({k: v for k, v in datos.items() if v is not None}).encode("utf-8")
     pedido = urllib.request.Request(

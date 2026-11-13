@@ -2,9 +2,9 @@
 
 USO
   En el servidor (PythonAnywhere -> Consoles -> Bash):
-      cd ~/english-cundi
+      cd ~/english-cundi/comunicacion-chatbot
       python3 configurar_telegram.py
-  Te pide el token que te dio @BotFather, guarda datos/telegram.json y le dice
+  Te pide el token que te dio @BotFather, guarda comunicacion-chatbot/telegram.json y le dice
   a Telegram a qué dirección mandar los mensajes (webhook).
 
   En tu PC, para probar el bot sin subir nada:
@@ -28,8 +28,8 @@ import urllib.error
 import urllib.request
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-CONFIG_PATH = os.path.join(BASE_DIR, "datos", "telegram.json")
-SITIO_POR_DEFECTO = "https://d4vids4nchez.pythonanywhere.com"
+CONFIG_PATH = os.path.join(BASE_DIR, "telegram.json")  # privado, no va a GitHub
+SITIO_POR_DEFECTO = "https://englishcundi.pythonanywhere.com"
 
 
 def cargar():
@@ -132,7 +132,7 @@ def modo_local():
     config = cargar()
     if not config.get("token"):
         sys.exit("Primero ejecuta:  py configurar_telegram.py")
-    sys.path.insert(0, BASE_DIR)
+    sys.path.insert(0, os.path.join(os.path.dirname(BASE_DIR), "pagina-web"))
     from app import app  # noqa: E402  (usa la base de datos local de prueba)
     import soporte_telegram
 

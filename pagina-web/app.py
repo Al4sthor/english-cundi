@@ -19,18 +19,26 @@ from flask import (Flask, abort, flash, g, redirect, render_template, request,
                    send_from_directory, session, url_for)
 from werkzeug.security import check_password_hash, generate_password_hash
 
-import soporte_telegram
-
+# Carpetas del proyecto:
+#   pagina-web/            esta carpeta (servidor Flask, plantillas, estilos)
+#   base-de-datos/         usuarios.db y los scripts de la base de datos
+#   comunicacion-chatbot/  bot de Telegram
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DB_PATH = os.path.join(BASE_DIR, "datos", "usuarios.db")
+RAIZ = os.path.dirname(BASE_DIR)
+DB_PATH = os.path.join(RAIZ, "base-de-datos", "usuarios.db")
 CONTENIDO_DIR = os.path.join(BASE_DIR, "contenido")
 
+import sys  # noqa: E402
+sys.path.insert(0, os.path.join(RAIZ, "comunicacion-chatbot"))
+import soporte_telegram  # noqa: E402
+
+
 def cargar_clave_secreta():
-    """Usa SECRET_KEY si existe; si no, crea una clave aleatoria en datos/
+    """Usa SECRET_KEY si existe; si no, crea pagina-web/clave_secreta.txt
     la primera vez y la reutiliza. Así nunca hay que copiarla a mano."""
     if os.environ.get("SECRET_KEY"):
         return os.environ["SECRET_KEY"]
-    ruta = os.path.join(BASE_DIR, "datos", "clave_secreta.txt")
+    ruta = os.path.join(BASE_DIR, "clave_secreta.txt")
     if not os.path.isfile(ruta):
         os.makedirs(os.path.dirname(ruta), exist_ok=True)
         with open(ruta, "w", encoding="utf-8") as archivo:
