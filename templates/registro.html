@@ -1,0 +1,44 @@
+{% extends "_auth.html" %}
+{% block titulo %}Crear cuenta · English Cundi{% endblock %}
+{% block formulario %}
+<h1>Crea tu cuenta</h1>
+<p class="subtitulo">Solo te pedimos lo necesario para guardar tu progreso.</p>
+
+<form method="post" class="formulario">
+  <input type="hidden" name="csrf" value="{{ token_csrf() }}">
+
+  <label class="campo">
+    <span>Nombre</span>
+    <input type="text" name="nombre" value="{{ nombre }}" required
+           minlength="2" maxlength="60" autocomplete="name" placeholder="Tu nombre">
+  </label>
+
+  <label class="campo">
+    <span>Correo</span>
+    <input type="email" name="correo" value="{{ correo }}" required
+           autocomplete="email" placeholder="tucorreo@ucundinamarca.edu.co">
+  </label>
+
+  <div class="fila-2">
+    <label class="campo">
+      <span>Contraseña</span>
+      <input type="password" name="password" required minlength="8"
+             autocomplete="new-password" placeholder="Mínimo 8 caracteres">
+    </label>
+    <label class="campo">
+      <span>Repite la contraseña</span>
+      <input type="password" name="confirmar" required minlength="8"
+             autocomplete="new-password" placeholder="Otra vez">
+    </label>
+  </div>
+
+  <label class="casilla">
+    <input type="checkbox" name="acepta" value="si" required>
+    <span>Acepto el <a href="{{ url_for('privacidad') }}" target="_blank" rel="noopener">tratamiento de mis datos personales</a> (Ley 1581 de 2012).</span>
+  </label>
+
+  <button type="submit" class="boton boton-principal">Crear cuenta</button>
+</form>
+
+<p class="cambio">¿Ya tienes cuenta? <a href="{{ url_for('login') }}">Inicia sesión</a></p>
+{% endblock %}

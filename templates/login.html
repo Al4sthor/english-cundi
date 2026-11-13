@@ -1,0 +1,27 @@
+{% extends "_auth.html" %}
+{% block titulo %}Iniciar sesión · English Cundi{% endblock %}
+{% block formulario %}
+<h1>¡Hola de nuevo!</h1>
+<p class="subtitulo">Inicia sesión para continuar con tu aprendizaje.</p>
+
+<form method="post" class="formulario" novalidate>
+  <input type="hidden" name="csrf" value="{{ token_csrf() }}">
+  <input type="hidden" name="siguiente" value="{{ siguiente }}">
+
+  <label class="campo">
+    <span>Correo</span>
+    <input type="email" name="correo" value="{{ correo }}" required
+           autocomplete="email" placeholder="tucorreo@ucundinamarca.edu.co">
+  </label>
+
+  <label class="campo">
+    <span>Contraseña</span>
+    <input type="password" name="password" required
+           autocomplete="current-password" placeholder="Tu contraseña">
+  </label>
+
+  <button type="submit" class="boton boton-principal">Entrar</button>
+</form>
+
+<p class="cambio">¿No tienes cuenta? <a href="{{ url_for('registro') }}">Regístrate gratis</a></p>
+{% endblock %}

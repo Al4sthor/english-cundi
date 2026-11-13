@@ -1,0 +1,17 @@
+# English Cundi - archivos que NUNCA se suben a GitHub
+# Autor: David Estiven Sánchez Yomayuza
+
+# Datos privados: base de datos, clave secreta, token del bot de Telegram
+datos/
+*.db
+clave_secreta.txt
+telegram.json
+
+# Entorno de Python
+venv/
+__pycache__/
+*.pyc
+
+# Configuración local de herramientas
+.claude/
+.vscode/

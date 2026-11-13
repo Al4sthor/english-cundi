@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block titulo %}Tratamiento de datos · English Cundi{% endblock %}
+{% block clase_body %}pagina-app{% endblock %}
+{% block cuerpo %}
+<main class="app texto">
+  <a class="volver" href="{{ url_for('inicio') }}">← Volver</a>
+  <h1>Tratamiento de datos personales</h1>
+  <p>English Cundi es un proyecto académico de estudiantes de Ingeniería de Sistemas y Computación de la Universidad de Cundinamarca, Extensión Chía.</p>
+  <h2>Qué datos guardamos</h2>
+  <p>Solo tu nombre, tu correo y tu contraseña. La contraseña se guarda cifrada con un hash, de modo que nadie, ni siquiera el equipo, puede leerla.</p>
+  <h2>Para qué los usamos</h2>
+  <p>Únicamente para que puedas iniciar sesión y usar las pruebas y plantillas del proyecto. No los vendemos, no los compartimos y no los usamos para publicidad.</p>
+  <h2>Dónde se guardan</h2>
+  <p>En una base de datos propia del proyecto (SQLite), alojada en el servidor de la aplicación. No usamos servicios de bases de datos de terceros.</p>
+  <h2>Tus derechos</h2>
+  <p>Según la Ley 1581 de 2012, puedes conocer, actualizar, corregir o pedir que se borren tus datos. Para hacerlo, escribe al equipo del proyecto.</p>
+</main>
+{% endblock %}

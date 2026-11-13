@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block titulo %}Inicio · English Cundi{% endblock %}
+{% block clase_body %}pagina-app{% endblock %}
+{% block cuerpo %}
+<header class="barra">
+  <div class="barra-interior">
+    <a class="logo" href="{{ url_for('inicio') }}">
+      <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" width="36" height="36">
+      <span>English Cundi</span>
+    </a>
+    <div class="barra-usuario">
+      <span class="avatar" aria-hidden="true">{{ session.get('nombre', '?')[:1]|upper }}</span>
+      <span class="barra-nombre">{{ session.get('nombre') }}</span>
+      <form method="post" action="{{ url_for('salir') }}">
+        <input type="hidden" name="csrf" value="{{ token_csrf() }}">
+        <button type="submit" class="boton boton-fantasma">Salir</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="app">
+  {% include "_avisos.html" %}
+
+  <section class="bienvenida">
+    <div>
+      <p class="etiqueta">Tu ruta de aprendizaje</p>
+      <h1>Hola, {{ session.get('nombre').split(' ')[0] }}</h1>
+      <p>Empieza por el diagnóstico, refuerza con las plantillas y termina con la prueba de conocimiento.</p>
+    </div>
+    <ol class="ruta">
+      <li><span>1</span>Diagnóstico</li>
+      <li><span>2</span>Plantillas</li>
+      <li><span>3</span>Prueba</li>
+    </ol>
+  </section>
+
+  <section class="modulos">
+    {% for modulo in modulos %}
+    <article class="modulo modulo-{{ modulo.color }}">
+      <p class="modulo-paso">Paso {{ loop.index }}</p>
+      <h2>{{ modulo.titulo }}</h2>
+      <p>{{ modulo.descripcion }}</p>
+      <div class="niveles">
+        {% for nivel in modulo.niveles %}
+          {% if nivel.listo %}
+            <a class="nivel" href="{{ url_for('contenido', ruta=nivel.ruta) }}">
+              <strong>{{ nivel.nombre }}</strong><span>Empezar →</span>
+            </a>
+          {% else %}
+            <span class="nivel nivel-pronto" title="El equipo todavía está preparando esta sección">
+              <strong>{{ nivel.nombre }}</strong><span>Próximamente</span>
+            </span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+</main>
+
+<footer class="pie">English Cundi · Desarrollado por David Estiven Sánchez Yomayuza · Universidad de Cundinamarca, Extensión Chía · <a href="{{ url_for('privacidad') }}">Tratamiento de datos</a></footer>
+{% endblock %}

@@ -1,0 +1,37 @@
+{
+  // English Cundi - Autor: David Estiven Sánchez Yomayuza
+  // Doble clic en este archivo para abrir el proyecto en Visual Studio Code.
+  "folders": [
+    { "name": "English Cundi", "path": "." }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}/venv/Scripts/python.exe",
+    "files.exclude": {
+      "**/__pycache__": true,
+      "venv": true
+    },
+    "workbench.editorAssociations": {
+      "*.db": "sqlite-viewer.option"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "qwtel.sqlite-viewer"
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Abrir English Cundi (local)",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/app.py",
+        "cwd": "${workspaceFolder}",
+        "python": "${workspaceFolder}/venv/Scripts/python.exe",
+        "console": "integratedTerminal"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block clase_body %}pagina-auth{% endblock %}
+{% block cuerpo %}
+<div class="auth">
+  <aside class="auth-marca">
+    <div class="auth-marca-interior">
+      <div class="logo">
+        <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" width="48" height="48">
+        <span>English Cundi</span>
+      </div>
+      <h2>Mide y practica tu inglés, paso a paso.</h2>
+      <ul class="beneficios">
+        <li>Diagnóstico para conocer tu nivel A1 o A2</li>
+        <li>Plantillas con infografías y ejercicios</li>
+        <li>Prueba final con calificación inmediata</li>
+      </ul>
+      <p class="auth-pie">Universidad de Cundinamarca · Extensión Chía</p>
+    </div>
+  </aside>
+
+  <main class="auth-formulario">
+    <div class="tarjeta-form">
+      <div class="logo logo-movil">
+        <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" width="40" height="40">
+        <span>English Cundi</span>
+      </div>
+      {% include "_avisos.html" %}
+      {% block formulario %}{% endblock %}
+    </div>
+  </main>
+</div>
+{% endblock %}
