@@ -1,32 +1,34 @@
 {% extends "base.html" %}
 {% block clase_body %}pagina-auth{% endblock %}
 {% block cuerpo %}
-<div class="auth">
-  <aside class="auth-marca">
-    <div class="auth-marca-interior">
-      <div class="logo">
-        <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" width="48" height="48">
-        <span>English Cundi</span>
-      </div>
-      <h2>Mide y practica tu inglés, paso a paso.</h2>
-      <ul class="beneficios">
-        <li>Diagnóstico para conocer tu nivel A1 o A2</li>
-        <li>Plantillas con infografías y ejercicios</li>
-        <li>Prueba final con calificación inmediata</li>
-      </ul>
-      <p class="auth-pie">Universidad de Cundinamarca · Extensión Chía</p>
+<div class="via">
+  <header class="via-cabecera">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" width="44" height="44">
+      <span>English Cundi</span>
     </div>
-  </aside>
+  </header>
 
-  <main class="auth-formulario">
-    <div class="tarjeta-form">
-      <div class="logo logo-movil">
-        <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" width="40" height="40">
-        <span>English Cundi</span>
+  <div class="via-cuerpo">
+    <section class="portico" aria-label="Qué puedes hacer en English Cundi">
+      <div class="senal senal-ruta portico-titulo entra">
+        <p class="titular">Mide tu inglés y practica en tu nivel</p>
+        <p class="bajada">Niveles A1 y A2, en tres paradas. Empieza por donde estás.</p>
       </div>
+      <ol class="portico-ruta entra">
+        <li><span class="escudo" aria-hidden="true">1</span><strong>Diagnóstico</strong><span class="detalle">Conoce tu nivel</span></li>
+        <li><span class="escudo" aria-hidden="true">2</span><strong>Plantillas</strong><span class="detalle">Infografías y ejercicios</span></li>
+        <li><span class="escudo" aria-hidden="true">3</span><strong>Prueba</strong><span class="detalle">Calificación inmediata</span></li>
+      </ol>
+    </section>
+
+    <main id="contenido" class="senal senal-blanca tarjeta-form entra">
       {% include "_avisos.html" %}
       {% block formulario %}{% endblock %}
-    </div>
-  </main>
+    </main>
+  </div>
+
+  <footer class="via-pie">Universidad de Cundinamarca · Extensión Chía · <a href="{{ url_for('privacidad') }}">Tratamiento de datos</a></footer>
+  <div class="carril" aria-hidden="true"></div>
 </div>
 {% endblock %}

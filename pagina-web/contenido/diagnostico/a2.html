@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="David Estiven Sánchez Yomayuza">
+  <meta name="theme-color" content="#11151a">
+  <title>Diagnóstico A2 · English Cundi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/estilo.css">
+  <link rel="stylesheet" href="/static/css/diagnostico.css">
+  <link rel="icon" href="/static/img/logo.svg" type="image/svg+xml">
+</head>
+<body class="pagina-app pagina-prueba">
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+  <header class="barra">
+    <div class="barra-interior">
+      <a class="logo" href="/">
+        <img src="/static/img/logo.svg" alt="" width="40" height="40">
+        <span>English Cundi</span>
+      </a>
+      <div class="barra-prueba">
+        <p class="reloj" id="reloj" hidden>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v5l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"/></svg>
+          <span>00:00</span>
+        </p>
+        <a class="boton boton-fantasma salir-prueba" href="/">Salir</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="prueba">
+    <ol class="pasos" id="pasos" aria-label="Paradas de la prueba" hidden></ol>
+    <main id="contenido" class="prueba-cuerpo">
+      <noscript><p class="aviso aviso-error">Esta prueba necesita JavaScript. Actívalo en tu navegador y recarga la página.</p></noscript>
+    </main>
+  </div>
+
+  <dialog id="confirmar" aria-labelledby="confirmar-t">
+    <div class="interior">
+      <h2 id="confirmar-t">¿Terminar la prueba?</h2>
+      <p></p>
+      <div class="acciones">
+        <button type="button" class="boton boton-principal" data-si>Ver mi resultado</button>
+        <button type="button" class="boton boton-claro" data-no>Seguir revisando</button>
+      </div>
+    </div>
+  </dialog>
+  <div class="carril" aria-hidden="true"></div>
+
+  <script>
+  window.DIAGNOSTICO = {
+    id: 'a2',
+    titulo: 'Diagnóstico A2',
+    descripcion: 'Una prueba para saber cómo vas en inglés elemental: vocabulario, gramática, lectura, escucha y escritura.',
+    minutos: '18 a 20',
+    escuchas: 2,
+    velocidad: 0.9,
+    niveles: [
+      { min: 0, id: 'A1 alto', titulo: 'Repasa antes del A2',
+        texto: 'Todavía te faltan algunas bases del nivel A1 para sentirte cómodo en el A2. Repasa los verbos to be y have, el presente simple y el vocabulario de la vida diaria, y haz primero el diagnóstico A1.' },
+      { min: 40, id: 'A2', titulo: 'Nivel elemental',
+        texto: 'Te comunicas en situaciones cotidianas: hablas de lo que hiciste, de tus planes y compras o pides cosas. Tu ruta es reforzar las plantillas de nivel A2 y luego hacer la prueba de conocimiento A2.' },
+      { min: 75, id: 'A2 sólido', titulo: 'Muy buen nivel',
+        texto: 'Manejas muy bien lo elemental. Repasa los ejercicios que fallaste y sigue practicando lectura y escucha para ir hacia un nivel más avanzado.' }
+    ],
+    secciones: [
+      { titulo: 'Vocabulario', corto: 'Vocabulario', hab: 'Vocabulario',
+        instr: 'Elige la palabra o frase correcta para cada oración.',
+        items: [
+          { t: 'mc', q: 'I need to ___ the bus at the next stop.', o: ['get off', 'get up', 'get on'], a: 0, e: 'Get off significa bajarse de un transporte.' },
+          { t: 'mc', q: 'A person who cuts your hair is a ___.', o: ['hairdresser', 'dentist', 'waiter'], a: 0, e: 'Hairdresser es peluquero o peluquera.' },
+          { t: 'mc', q: 'Which word is NOT a fruit?', o: ['apple', 'banana', 'carrot'], a: 2, e: 'Carrot es zanahoria, una verdura.' },
+          { t: 'mc', q: "I can't hear you. Please speak ___.", o: ['louder', 'lower', 'later'], a: 0, e: 'Louder significa más fuerte.' },
+          { t: 'mc', q: 'You use a ___ to find the meaning of a word.', o: ['dictionary', 'calendar', 'mirror'], a: 0, e: 'Dictionary es el diccionario.' },
+          { t: 'mc', q: 'My sister is very ___. She is never afraid.', o: ['brave', 'lazy', 'shy'], a: 0, e: 'Brave significa valiente.' }
+        ] },
+      { titulo: 'Gramática', corto: 'Gramática', hab: 'Gramática',
+        instr: 'Elige la opción que completa bien cada oración.',
+        items: [
+          { t: 'mc', q: 'Yesterday I ___ to the cinema with my friends.', o: ['go', 'went', 'going'], a: 1, e: 'Yesterday pide pasado simple. Go cambia a went.' },
+          { t: 'mc', q: 'My house is ___ than yours.', o: ['bigger', 'more big', 'biggest'], a: 0, e: 'Los adjetivos cortos hacen el comparativo con er: bigger.' },
+          { t: 'mc', q: 'We ___ visit my uncle next weekend.', o: ['are going to', 'going to', 'go to'], a: 0, e: 'Para planes: be + going to + verbo.' },
+          { t: 'mc', q: 'How ___ water do you drink every day?', o: ['many', 'much', 'a lot'], a: 1, e: 'Water no se cuenta, por eso se usa much.' },
+          { t: 'mc', q: "You ___ park here. It's forbidden.", o: ["can't", "don't have to", 'should'], a: 0, e: "Can't indica que algo no está permitido." },
+          { t: 'mc', q: 'She ___ her homework when I called her.', o: ['was doing', 'did', 'does'], a: 0, e: 'Una acción en progreso en el pasado: was doing.' },
+          { t: 'mc', q: 'I have lived in Chía ___ 2019.', o: ['for', 'since', 'from'], a: 1, e: 'Since se usa con un punto en el tiempo (2019).' },
+          { t: 'mc', q: 'If it rains tomorrow, we ___ at home.', o: ['stay', 'will stay', 'stayed'], a: 1, e: 'Con if + presente, el resultado usa will.' }
+        ] },
+      { titulo: 'Completa la oración', corto: 'Completa', hab: 'Gramática',
+        instr: 'Escribe la palabra o palabras que faltan.',
+        items: [
+          { t: 'fill', q: 'Last night she ___ TV. (negativo de watch)', a: ["didn't watch", 'did not watch'], e: 'Pasado negativo: didn’t + verbo base.' },
+          { t: 'fill', q: 'This is the ___ restaurant in town. (good)', a: ['best'], e: 'El superlativo de good es best.' },
+          { t: 'fill', q: 'Tom is ___ than his brother. (tall)', a: ['taller'], e: 'Tall + er = taller.' },
+          { t: 'fill', q: 'I ___ Maria yesterday. (see)', a: ['saw'], e: 'El pasado de see es saw.' },
+          { t: 'fill', q: 'You ___ wear a helmet. It is the law. (obligación)', a: ['must', 'have to'], e: 'Must o have to expresan obligación.' },
+          { t: 'fill', q: 'What time ___ you get up yesterday? (do)', a: ['did'], e: 'Preguntas en pasado: did + sujeto + verbo base.' }
+        ] },
+      { titulo: 'Une las palabras', corto: 'Une', hab: 'Vocabulario',
+        instr: 'Elige el significado de cada palabra en el menú.',
+        items: [
+          { t: 'match', q: 'Une cada palabra con su significado.',
+            pares: [
+              ['borrow', 'to take something and give it back later'],
+              ['ticket', 'a paper you buy to travel or enter a place'],
+              ['neighbour', 'a person who lives next to you'],
+              ['cheap', 'not expensive'],
+              ['delay', 'when a bus or plane arrives later than planned']
+            ],
+            e: 'Si te equivocaste, repasa estas cinco palabras.' }
+        ] },
+      { titulo: 'Ordena la oración', corto: 'Ordena', hab: 'Gramática',
+        instr: 'Toca las palabras en el orden correcto para formar la oración.',
+        items: [
+          { t: 'order', q: 'Forma una pregunta en pasado.', fichas: ['party', 'Did', '?', 'last night', 'you', 'go to the'], a: 'Did you go to the party last night?', e: 'Did + sujeto + verbo base + resto de la oración.' },
+          { t: 'order', q: 'Forma una oración con present perfect.', fichas: ['been', 'She', '.', 'Cartagena', 'has never', 'to'], a: 'She has never been to Cartagena.', e: 'Has/have + never + participio (been).' },
+          { t: 'order', q: 'Forma una oración sobre un plan.', fichas: ['with my friends', "I'm", '.', 'study', 'tomorrow', 'going to'], a: "I'm going to study with my friends tomorrow.", e: 'be + going to + verbo para planes.' }
+        ] },
+      { titulo: 'Lectura', corto: 'Lectura', hab: 'Lectura',
+        instr: 'Lee el correo y responde las preguntas. Puedes mirar el texto cuando quieras.',
+        textoTitulo: 'An email from Laura',
+        texto: [
+          'Hi Sam, how are you? I am writing from Medellín. I arrived last Friday and the weather is great: it is warm and sunny, but it rained on Sunday.',
+          'I am staying with my cousin Paula in a small apartment near the park. Yesterday we visited the botanical garden and had lunch at a cheap restaurant. The food was delicious!',
+          'Tomorrow we are going to take a cable car to a big market. I am coming back to Bogotá on Thursday by bus. Would you like to meet on Friday? Write soon! Laura'
+        ],
+        items: [
+          { t: 'mc', q: 'When did Laura arrive in Medellín?', o: ['Last Friday', 'On Sunday', 'Yesterday'], a: 0, e: 'Dice: I arrived last Friday.' },
+          { t: 'mc', q: 'Where is she staying?', o: ['In a hotel', 'With her cousin', 'With Sam'], a: 1, e: 'Dice: I am staying with my cousin Paula.' },
+          { t: 'mc', q: 'What did they do yesterday?', o: ['They went to a market.', 'They visited the botanical garden.', 'They took a cable car.'], a: 1, e: 'El mercado y el cable car son planes para mañana.' },
+          { t: 'mc', q: 'The restaurant was expensive.', o: ['True', 'False'], a: 1, e: 'Dice cheap restaurant, o sea barato.' },
+          { t: 'mc', q: 'How will Laura go back to Bogotá?', o: ['By plane', 'By bus', 'By cable car'], a: 1, e: 'Dice: coming back to Bogotá on Thursday by bus.' },
+          { t: 'mc', q: 'What does Laura ask Sam?', o: ['To call her tomorrow', 'To meet on Friday', 'To come to Medellín'], a: 1, e: 'Pregunta: Would you like to meet on Friday?' }
+        ] },
+      { titulo: 'Escucha', corto: 'Escucha', hab: 'Escucha',
+        instr: 'Presiona Escuchar y responde. Cada audio se puede oír dos veces.',
+        items: [
+          { t: 'mc', q: 'When does the train leave?',
+            audio: [{ t: 'Excuse me, what time does the next train to Zipaquirá leave?', v: 'f' }, { t: 'It leaves at a quarter to six.', v: 'm' }],
+            o: ['5:15', '5:45', '6:15'], a: 1, e: 'A quarter to six es 5:45.' },
+          { t: 'fill', digitos: true, q: 'Escribe el precio por noche (solo el número).',
+            audio: [{ t: 'The hotel costs forty-five dollars per night.', v: 'f' }],
+            a: ['45'], e: 'Forty-five es 45.' },
+          { t: 'mc', q: "Why can't he come to the party?",
+            audio: [{ t: "Hi Carla, I can't come to the party tonight because I have to work. Let's go to the cinema on Saturday instead.", v: 'm' }],
+            o: ['He is sick.', 'He has to work.', 'He is travelling.'], a: 1, e: 'Dice: because I have to work.' },
+          { t: 'mc', q: 'What does the second person think about the film?',
+            audio: [{ t: 'Did you like the film?', v: 'f' }, { t: 'It was boring and too long. I prefer comedies.', v: 'm' }],
+            o: ['It was exciting.', 'It was boring.', 'It was funny.'], a: 1, e: 'Dice: It was boring and too long.' },
+          { t: 'fill', q: 'Today I got up at ___ o’clock. (escribe el número)',
+            audio: [{ t: 'I usually get up at six, but today I got up at seven because it was Sunday.', v: 'f' }],
+            a: ['7', 'seven'], e: 'Hoy se levantó a las siete: seven.' }
+        ] },
+      { titulo: 'Escritura', corto: 'Escritura', hab: 'Escritura',
+        instr: 'Escribe un correo corto a un amigo. No importa si cometes errores, lo importante es comunicar.',
+        items: [
+          { t: 'write', q: 'Escribe un correo de 50 palabras o más. Cuenta qué hiciste el fin de semana pasado y qué planes tienes para este fin de semana.',
+            min: 50,
+            checks: [
+              { label: 'Saludas al inicio (Hi, Hello, Dear…)', re: '\\b(hi|hello|dear|hey)\\b' },
+              { label: 'Cuentas algo en pasado (went, was, visited…)', re: '\\b(went|was|were|did|visited|watched|played|ate|had|saw|stayed|studied|met|cooked|\\w+ed)\\b' },
+              { label: 'Cuentas un plan o algo del futuro (going to, will…)', re: "(going to|will|i'll|i’ll|next|tomorrow|this weekend|this saturday|this sunday)" }
+            ],
+            modelo: 'Hi Sam! Last weekend I went to Zipaquirá with my family. We visited the salt cathedral and ate lunch in a small restaurant. It was a great day, but I was tired on Sunday. This weekend I am going to study for my English exam on Saturday and, on Sunday, I will play football with my friends. Would you like to join us? Write soon!' }
+        ] }
+    ]
+  };
+  </script>
+  <script src="/static/js/diagnostico.js"></script>
+</body>
+</html>
