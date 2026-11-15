@@ -5,7 +5,7 @@
 <header class="barra">
   <div class="barra-interior">
     <a class="logo" href="{{ url_for('inicio') }}">
-      <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" width="36" height="36">
+      <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" width="40" height="40">
       <span>English Cundi</span>
     </a>
     <div class="barra-usuario">
@@ -19,37 +19,40 @@
   </div>
 </header>
 
-<main class="app">
+<main id="contenido" class="app">
   {% include "_avisos.html" %}
 
   <section class="bienvenida">
-    <div>
-      <p class="etiqueta">Tu ruta de aprendizaje</p>
-      <h1>Hola, {{ session.get('nombre').split(' ')[0] }}</h1>
-      <p>Empieza por el diagnóstico, refuerza con las plantillas y termina con la prueba de conocimiento.</p>
+    <div class="senal senal-ruta entra">
+      <div>
+        <h1>Hola, {{ session.get('nombre').split(' ')[0] }}</h1>
+        <p>Empieza por el diagnóstico, refuerza con las plantillas y termina con la prueba de conocimiento.</p>
+      </div>
+      <ol class="ruta" aria-label="Tu ruta">
+        <li><span class="escudo" aria-hidden="true">1</span>Diagnóstico</li>
+        <li><span class="escudo" aria-hidden="true">2</span>Plantillas</li>
+        <li><span class="escudo" aria-hidden="true">3</span>Prueba</li>
+      </ol>
     </div>
-    <ol class="ruta">
-      <li><span>1</span>Diagnóstico</li>
-      <li><span>2</span>Plantillas</li>
-      <li><span>3</span>Prueba</li>
-    </ol>
   </section>
 
-  <section class="modulos">
+  <section class="modulos" aria-label="Módulos">
     {% for modulo in modulos %}
-    <article class="modulo modulo-{{ modulo.color }}">
-      <p class="modulo-paso">Paso {{ loop.index }}</p>
+    <article class="senal modulo modulo-{{ modulo.color }} entra">
+      <span class="soporte" aria-hidden="true"></span><span class="soporte" aria-hidden="true"></span>
+      <span class="escudo" aria-hidden="true">{{ loop.index }}</span>
       <h2>{{ modulo.titulo }}</h2>
-      <p>{{ modulo.descripcion }}</p>
+      <p class="modulo-descripcion">{{ modulo.descripcion }}</p>
       <div class="niveles">
         {% for nivel in modulo.niveles %}
           {% if nivel.listo %}
             <a class="nivel" href="{{ url_for('contenido', ruta=nivel.ruta) }}">
-              <strong>{{ nivel.nombre }}</strong><span>Empezar →</span>
+              <strong>{{ nivel.nombre }}</strong>
+              <span>Empezar <svg class="ir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </a>
           {% else %}
             <span class="nivel nivel-pronto" title="El equipo todavía está preparando esta sección">
-              <strong>{{ nivel.nombre }}</strong><span>Próximamente</span>
+              <span class="contenido"><strong>{{ nivel.nombre }}</strong><span>Próximamente</span></span>
             </span>
           {% endif %}
         {% endfor %}
@@ -59,5 +62,6 @@
   </section>
 </main>
 
-<footer class="pie">English Cundi · Desarrollado por David Estiven Sánchez Yomayuza · Universidad de Cundinamarca, Extensión Chía · <a href="{{ url_for('privacidad') }}">Tratamiento de datos</a></footer>
+<footer class="pie">English Cundi · Desarrollado por Nodex · Universidad de Cundinamarca, Extensión Chía · <a href="{{ url_for('privacidad') }}">Tratamiento de datos</a></footer>
+<div class="carril" aria-hidden="true"></div>
 {% endblock %}

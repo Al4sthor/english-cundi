@@ -2,10 +2,13 @@
 {% block titulo %}Error {{ codigo }} · English Cundi{% endblock %}
 {% block clase_body %}pagina-app{% endblock %}
 {% block cuerpo %}
-<main class="app error">
-  <p class="error-codigo">{{ codigo }}</p>
-  <h1>Ups…</h1>
-  <p>{{ mensaje }}</p>
-  <a class="boton boton-principal" href="{{ url_for('inicio') }}">Ir al inicio</a>
+<main id="contenido" class="app error">
+  <div class="senal senal-aviso entra">
+    <p class="error-codigo">{{ codigo }}</p>
+    <h1>Vía cerrada</h1>
+    <p>{{ mensaje }}</p>
+    <a class="boton boton-principal" href="{{ url_for('inicio') }}">Ir al inicio</a>
+  </div>
 </main>
+<div class="carril" aria-hidden="true"></div>
 {% endblock %}
