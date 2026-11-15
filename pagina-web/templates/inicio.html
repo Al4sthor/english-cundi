@@ -2,22 +2,8 @@
 {% block titulo %}Inicio · English Cundi{% endblock %}
 {% block clase_body %}pagina-app{% endblock %}
 {% block cuerpo %}
-<header class="barra">
-  <div class="barra-interior">
-    <a class="logo" href="{{ url_for('inicio') }}">
-      <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="" width="40" height="40">
-      <span>English Cundi</span>
-    </a>
-    <div class="barra-usuario">
-      <span class="avatar" aria-hidden="true">{{ session.get('nombre', '?')[:1]|upper }}</span>
-      <span class="barra-nombre">{{ session.get('nombre') }}</span>
-      <form method="post" action="{{ url_for('salir') }}">
-        <input type="hidden" name="csrf" value="{{ token_csrf() }}">
-        <button type="submit" class="boton boton-fantasma">Salir</button>
-      </form>
-    </div>
-  </div>
-</header>
+{% set activa = 'panel' %}
+{% include "_cabecera.html" %}
 
 <main id="contenido" class="app">
   {% include "_avisos.html" %}
@@ -34,6 +20,15 @@
         <li><span class="escudo" aria-hidden="true">3</span>Prueba</li>
       </ol>
     </div>
+  </section>
+
+  <section class="senal senal-aviso entrenar entra" aria-labelledby="t-entrenar">
+    <div>
+      <h2 id="t-entrenar">Práctica diaria</h2>
+      <p>Survival, flashcards, conversaciones y más. Gana XP, sube de nivel y mantén tu racha.</p>
+      <p class="mini-prog" id="mini-prog" aria-live="polite"></p>
+    </div>
+    <a class="boton boton-oscuro" href="{{ url_for('practica') }}">Ir a practicar</a>
   </section>
 
   <section class="modulos" aria-label="Módulos">
@@ -64,4 +59,16 @@
 
 <footer class="pie">English Cundi · Desarrollado por Nodex · Universidad de Cundinamarca, Extensión Chía · <a href="{{ url_for('privacidad') }}">Tratamiento de datos</a></footer>
 <div class="carril" aria-hidden="true"></div>
+<script src="{{ url_for('static', filename='js/progreso.js') }}"></script>
+<script>
+  (function () {
+    var el = document.getElementById('mini-prog');
+    if (!el || !window.Progreso) { return; }
+    window.Progreso.cargar().then(function (d) {
+      var n = window.Progreso.infoNivel();
+      var m = window.Progreso.misionesHoy().filter(function (x) { return x.cobrada; }).length;
+      el.textContent = 'Nivel ' + n.nivel + ' · ' + n.xp + ' XP · racha de ' + d.racha.actual + (d.racha.actual === 1 ? ' día' : ' días') + ' · misiones de hoy: ' + m + ' de 3';
+    });
+  })();
+</script>
 {% endblock %}

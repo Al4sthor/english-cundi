@@ -40,3 +40,17 @@ from app import app as application
 
 **Para actualizar:** sube los archivos cambiados y pulsa **Reload** en la pestaña Web.
 La cuenta gratuita se renueva cada mes, en la pestaña Web con el botón *Run until 1 month from today*.
+
+## Portada, práctica y progreso
+
+| Ruta | Qué es |
+|---|---|
+| `/` | Portada pública: quiénes somos (Nodex), misión, visión, video de YouTube y consejos. La misión y la visión son un borrador: el equipo puede cambiarlas en `templates/portada.html`. |
+| `/panel` | Panel del alumno (antes era `/`): diagnóstico, plantillas y prueba. Pide sesión. |
+| `/practica` | Zona de práctica con 10 modos de juego, cuaderno de errores, logros y estadísticas. Pide sesión. |
+| `/api/progreso` | Lee y guarda el progreso (XP, racha, logros, cuaderno de errores). Solo la usa JavaScript. |
+
+- **Contenido de la práctica:** `contenido/practica/a1.json` y `a2.json` (vocabulario, preguntas, Boss Challenge, frases y conversaciones). Para agregar palabras o preguntas basta editar el JSON.
+- **Código:** `static/js/progreso.js` (XP, nivel, racha, misiones, logros) y `static/js/practica.js` (los modos). Estilos en `static/css/practica.css`.
+- **Base de datos:** la tabla `progreso` guarda un JSON por alumno. `app.py` la crea sola si falta; también está en `base-de-datos/schema.sql`.
+- **Sin archivos de audio:** la escucha usa la voz del navegador (Web Speech) y el Speaking usa el reconocimiento de voz de Chrome o Edge.

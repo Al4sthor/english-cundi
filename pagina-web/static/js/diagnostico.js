@@ -510,8 +510,25 @@
   function terminar() {
     try { if (tts) { window.speechSynthesis.cancel(); } } catch (e) { /* nada */ }
     est.fin = Date.now(); est.vista = 'resultado'; guardar();
+    guardarEnProgreso();
     pantallaResultado();
     window.scrollTo(0, 0);
+  }
+
+  /* Guarda el nivel en el progreso del alumno. La primera vez de cada nivel da XP. */
+  function guardarEnProgreso() {
+    var Pr = window.Progreso;
+    if (!Pr) { return; }
+    var c = calcular();
+    var pct = c.max ? Math.round((c.total / c.max) * 100) : 0;
+    Pr.cargar().then(function () {
+      var primera = !Pr.datos.diag[D.id];
+      Pr.datos.diag[D.id] = { nivel: nivelDe(pct).id, pct: pct, puntos: c.total, max: c.max, fecha: new Date().toLocaleDateString('en-CA') };
+      Pr.registrarDia();
+      if (primera) { Pr.sumarXP(Math.round(pct / 2) + 20, 'diagnostico'); }
+      Pr.revisarLogros();
+      Pr.guardarYa();
+    });
   }
 
   function dos(n) { return (n < 10 ? '0' : '') + n; }
@@ -615,7 +632,7 @@
       })),
       h('p', { class: 'nota', text: 'Este resultado es una guía para ubicarte. Se guarda solo en este navegador.' }),
       h('div', { class: 'acciones' },
-        h('a', { class: 'boton boton-principal', href: '/' }, 'Volver al inicio', svg(ICONO.ir)),
+        h('a', { class: 'boton boton-principal', href: '/panel' }, 'Volver al panel', svg(ICONO.ir)),
         h('button', { type: 'button', class: 'boton boton-claro', onclick: reiniciar }, 'Repetir la prueba'))));
 
     var revision = h('section', { class: 'senal senal-blanca hoja revision' }, h('h2', { text: 'Revisa tus respuestas' }));
