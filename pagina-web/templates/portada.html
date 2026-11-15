@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block titulo %}English Cundi · Aprende y practica inglés A1 y A2{% endblock %}
+{% block clase_body %}pagina-app pagina-portada{% endblock %}
+{% block cuerpo %}
+{% set activa = 'portada' %}
+{% include "_cabecera.html" %}
+
+<main id="contenido">
+
+  <section class="heroe">
+    <div class="heroe-interior">
+      <div class="senal senal-ruta heroe-titulo entra">
+        <h1>English Cundi</h1>
+        <p class="heroe-bajada">Aprende y practica inglés de nivel A1 y A2, con diagnóstico, juegos de práctica y pruebas hechos por estudiantes de la Universidad de Cundinamarca, Extensión Chía.</p>
+        <div class="acciones">
+          {% if logueado %}
+          <a class="boton boton-amarillo" href="{{ url_for('inicio') }}">Ir a mi panel</a>
+          <a class="boton boton-claro-oscuro" href="{{ url_for('practica') }}">Practicar ahora</a>
+          {% else %}
+          <a class="boton boton-amarillo" href="{{ url_for('registro') }}">Crear mi cuenta</a>
+          <a class="boton boton-claro-oscuro" href="{{ url_for('login') }}">Ya tengo cuenta</a>
+          {% endif %}
+        </div>
+      </div>
+      <ul class="datos entra" aria-label="English Cundi en cifras">
+        <li class="senal senal-aviso"><strong>2</strong><span>niveles: A1 y A2</span></li>
+        <li class="senal senal-blanca"><strong>10</strong><span>modos de práctica</span></li>
+        <li class="senal senal-blanca"><strong>15 a 20</strong><span>minutos dura el diagnóstico</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-quienes">
+    <div class="seccion-interior">
+      <h2 id="t-quienes">Quiénes somos</h2>
+      <div class="quienes">
+        <p class="quienes-texto">Somos <strong>Nodex</strong>, un equipo de estudiantes de Ingeniería de Sistemas y Computación de la Universidad de Cundinamarca, Extensión Chía. Creamos English Cundi para que practicar inglés sea más fácil, corto y entretenido.</p>
+        <ul class="equipo" aria-label="Integrantes del equipo">
+          <li>David Estiven Sánchez Yomayuza</li>
+          <li>Kevin Contreras</li>
+          <li>Wilder Ortiz</li>
+        </ul>
+      </div>
+      <div class="vm">
+        <!-- Texto borrador: el equipo puede cambiar la misión y la visión por las oficiales. -->
+        <article class="senal senal-blanca">
+          <h3>Misión</h3>
+          <p>Ayudar a los estudiantes de la Universidad de Cundinamarca a medir y mejorar su inglés de nivel A1 y A2, con práctica corta y diaria que se puede hacer desde el celular o el computador.</p>
+        </article>
+        <article class="senal senal-aviso">
+          <h3>Visión</h3>
+          <p>Ser la plataforma de práctica de inglés que los estudiantes de la universidad abren todos los días, y crecer con más niveles, más actividades y más compañeros que aprenden juntos.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion-video" aria-labelledby="t-video">
+    <div class="seccion-interior">
+      <h2 id="t-video">Empieza con una clase</h2>
+      <div class="video-marco senal senal-ruta">
+        <div class="video">
+          <iframe src="https://www.youtube-nocookie.com/embed/f5G3DufRuH8" title="Curso gratis de inglés para principiantes (A1), de Spring English"
+                  loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+      <p class="credito">Video de <a href="https://www.youtube.com/watch?v=f5G3DufRuH8" target="_blank" rel="noopener">Spring English en YouTube</a>.</p>
+    </div>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-consejos">
+    <div class="seccion-interior">
+      <h2 id="t-consejos">Consejos para aprender mejor</h2>
+      <ol class="consejos">
+        <li><span class="escudo" aria-hidden="true">1</span><div><h3>Practica un poco cada día</h3><p>Quince minutos todos los días sirven más que dos horas una vez por semana.</p></div></li>
+        <li><span class="escudo" aria-hidden="true">2</span><div><h3>Escucha inglés a diario</h3><p>Canciones, videos cortos o series con subtítulos en inglés. Tu oído se acostumbra.</p></div></li>
+        <li><span class="escudo" aria-hidden="true">3</span><div><h3>Habla en voz alta</h3><p>Repite las frases aunque estés solo. Hablar se aprende hablando.</p></div></li>
+        <li><span class="escudo" aria-hidden="true">4</span><div><h3>Aprende frases completas</h3><p>Una frase entera se recuerda mejor que una palabra suelta, y te sirve para conversar.</p></div></li>
+        <li><span class="escudo" aria-hidden="true">5</span><div><h3>Repasa tus errores</h3><p>Lo que fallas hoy es lo que más te enseña. Por eso la práctica guarda un cuaderno de errores.</p></div></li>
+        <li><span class="escudo" aria-hidden="true">6</span><div><h3>No temas equivocarte</h3><p>Todos cometen errores al empezar. Lo importante es que te entiendan y seguir intentando.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="seccion cierre" aria-labelledby="t-cierre">
+    <div class="seccion-interior">
+      <div class="senal senal-aviso cierre-senal">
+        <h2 id="t-cierre">Haz tu diagnóstico y sigue tu ruta</h2>
+        <p>Descubre tu nivel, practica con juegos y mira cómo subes de nivel.</p>
+        <div class="acciones">
+          {% if logueado %}
+          <a class="boton boton-oscuro" href="{{ url_for('inicio') }}">Ir a mi panel</a>
+          {% else %}
+          <a class="boton boton-oscuro" href="{{ url_for('registro') }}">Crear mi cuenta</a>
+          <a class="boton boton-claro" href="{{ url_for('login') }}">Entrar</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">English Cundi · Desarrollado por Nodex · Universidad de Cundinamarca, Extensión Chía · <a href="{{ url_for('privacidad') }}">Tratamiento de datos</a></footer>
+<div class="carril" aria-hidden="true"></div>
+{% endblock %}

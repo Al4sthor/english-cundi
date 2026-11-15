@@ -527,3 +527,109 @@ a.nivel:focus-visible { outline-color: var(--sec); }
   .boton-ayuda span { display: none; }
   .tarjeta-form .boton { width: 100%; }
 }
+
+/* ================================================== navegación principal */
+.barra-interior { flex-wrap: wrap; }
+.menu-principal { display: flex; gap: 0.3rem; margin-right: auto; margin-left: 1.5rem; }
+.menu-principal a {
+  min-height: 44px; display: inline-flex; align-items: center;
+  padding: 0 0.9rem; border-radius: 10px;
+  font-family: var(--titulo); font-size: 1.25rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--texto-suave); text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+}
+.menu-principal a:hover { color: var(--texto); background: var(--asfalto-3); }
+.menu-principal a[aria-current="page"] { color: var(--aviso); box-shadow: 0 -4px 0 var(--aviso) inset; border-radius: 0; }
+.boton-corto { min-height: 44px; padding: 0.5rem 1.1rem; font-size: 1.15rem; }
+.barra-usuario .boton-principal { box-shadow: 0 4px 0 var(--ruta-oscuro); }
+
+/* botones sobre fondos de color */
+.boton-amarillo { background: var(--aviso); color: var(--tinta); border-color: var(--tinta); box-shadow: 0 5px 0 var(--aviso-oscuro); }
+.boton-amarillo:hover { background: #ffd84d; color: var(--tinta); box-shadow: 0 7px 0 var(--aviso-oscuro); }
+.boton-claro-oscuro { background: transparent; color: var(--reflectivo); border-color: var(--reflectivo); }
+.boton-claro-oscuro:hover { background: rgba(255, 255, 255, 0.14); color: var(--reflectivo); }
+.boton-oscuro { background: var(--tinta); color: var(--aviso); border-color: var(--tinta); box-shadow: 0 5px 0 rgba(0, 0, 0, 0.3); }
+.boton-oscuro:hover { background: #000; color: #ffd84d; }
+.senal-aviso .boton-claro { color: var(--tinta); border-color: var(--tinta); background: transparent; }
+.senal-aviso .boton-claro:hover { background: rgba(13, 17, 20, 0.1); }
+.acciones { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.4rem; }
+
+/* ===================================================== portada pública */
+.heroe { padding: clamp(1rem, 3vw, 2.5rem) clamp(1rem, 4vw, 3rem) 0; }
+.heroe-interior {
+  max-width: 1240px; margin: 0 auto;
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: clamp(1.2rem, 3vw, 2.5rem); align-items: stretch;
+  min-height: min(620px, calc(100vh - 150px));
+}
+.heroe-titulo { padding: clamp(1.8rem, 4vw, 3.4rem); display: flex; flex-direction: column; justify-content: center; }
+.heroe-titulo h1 { font-size: clamp(3.8rem, 10vw, 8rem); font-weight: 800; line-height: 0.88; margin: 0 0 1.2rem; }
+.heroe-bajada { font-size: clamp(1.1rem, 1.6vw, 1.35rem); max-width: 40ch; margin: 0; }
+.datos { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; align-content: stretch; grid-auto-rows: 1fr; }
+.datos li { display: flex; flex-direction: column; justify-content: center; padding: 1.2rem 1.6rem; }
+.datos strong { font-family: var(--titulo); font-size: clamp(3rem, 5vw, 4.6rem); font-weight: 800; line-height: 0.95; }
+.datos span { font-weight: 600; font-size: 1.1rem; }
+
+.seccion { padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem) 0; }
+.seccion-interior { max-width: 1240px; margin: 0 auto; }
+.seccion h2 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; margin-bottom: 1.4rem; }
+.quienes { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 2rem; align-items: start; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.quienes-texto { margin: 0; font-size: 1.25rem; max-width: 52ch; }
+.equipo { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.equipo li { padding: 0.7rem 1rem; border: 2px solid var(--linea); border-radius: 12px; background: var(--asfalto-2); font-weight: 600; }
+.vm { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.75rem); }
+.vm article { padding: clamp(1.6rem, 3vw, 2.4rem); }
+.vm h3 { font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 0.6rem; }
+.vm p { margin: 0; font-size: 1.12rem; max-width: 46ch; }
+
+.video-marco { padding: clamp(1.2rem, 2.4vw, 1.8rem); max-width: 960px; }
+.video { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.credito { margin: 1rem 0 0; color: var(--texto-suave); font-size: 0.95rem; }
+
+.consejos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.3rem 2.5rem; }
+.consejos li { display: flex; gap: 1.1rem; align-items: flex-start; }
+.consejos h3 { font-size: 1.7rem; font-weight: 800; margin-bottom: 0.2rem; }
+.consejos p { margin: 0; color: var(--texto-suave); max-width: 44ch; }
+
+.cierre { padding-bottom: clamp(2rem, 4vw, 3rem); }
+.cierre-senal { padding: clamp(2rem, 5vw, 3.6rem); text-align: center; }
+.cierre-senal h2 { margin-bottom: 0.6rem; }
+.cierre-senal p { margin: 0 auto; max-width: 46ch; font-size: 1.2rem; }
+.cierre-senal .acciones { justify-content: center; }
+.pagina-portada .pie { padding-top: 1rem; }
+
+/* panel: bloque de práctica */
+.entrenar { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.entrenar h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin: 0 0 0.3rem; }
+.entrenar p { margin: 0 0 0.3rem; max-width: 50ch; }
+.mini-prog { font-weight: 700; }
+
+/* avisos de logros, nivel y misiones */
+.avisos-prog { position: fixed; left: 1rem; bottom: 1.2rem; z-index: 60; display: grid; gap: 0.5rem; max-width: min(92vw, 24rem); }
+.aviso-prog {
+  margin: 0; padding: 0.8rem 1.1rem; border-radius: 12px; font-weight: 700;
+  background: var(--reflectivo); color: var(--tinta); border: 3px solid var(--tinta);
+  box-shadow: 0 12px 26px -10px rgba(0, 0, 0, 0.7);
+}
+.aviso-prog.nivel { background: var(--aviso); }
+.aviso-prog.logro { background: var(--ruta); color: var(--reflectivo); border-color: var(--reflectivo); }
+.aviso-prog.mision { background: var(--ok-fondo); color: var(--ok); border-color: var(--ok); }
+@media (prefers-reduced-motion: no-preference) {
+  .aviso-prog { animation: entra 0.5s var(--ease) both; }
+}
+
+@media (max-width: 1000px) {
+  .heroe-interior { grid-template-columns: 1fr; min-height: 0; }
+  .datos { grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; }
+  .quienes, .vm, .consejos { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .menu-principal { order: 3; width: 100%; margin: 0; overflow-x: auto; }
+  .datos { grid-template-columns: 1fr; }
+  .datos li { flex-direction: row; align-items: baseline; gap: 0.8rem; }
+  .barra-usuario .boton-fantasma { padding: 0.45rem 0.8rem; }
+}
+
+/* mismos bordes que la cabecera (1240 menos el relleno de cada lado) */
+.heroe-interior, .seccion-interior { max-width: 1144px; }

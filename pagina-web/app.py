@@ -9,6 +9,7 @@ Proyecto: English Cundi - Ingeniería de Sistemas y Computación,
 Universidad de Cundinamarca, Extensión Chía (2026).
 """
 __author__ = "David  Sánchez wilder ortiz kevin contreras"
+import json
 import os
 import re
 import secrets
@@ -85,6 +86,28 @@ MODULOS = [
 
 
 # ---------------------------------------------------------------- base de datos
+def asegurar_tablas():
+    """Crea la tabla del progreso si todavía no existe (no toca los usuarios)."""
+    if not os.path.isfile(DB_PATH):
+        return
+    conexion = sqlite3.connect(DB_PATH)
+    conexion.execute(
+        "CREATE TABLE IF NOT EXISTS progreso ("
+        " usuario_id INTEGER PRIMARY KEY REFERENCES usuarios(id) ON DELETE CASCADE,"
+        " datos TEXT NOT NULL,"
+        " actualizado TEXT NOT NULL DEFAULT (datetime('now')))"
+    )
+    conexion.commit()
+    conexion.close()
+
+
+asegurar_tablas()
+
+# El progreso (XP, racha, logros, cuaderno de errores...) se guarda como un solo
+# texto JSON por alumno. Este tope evita que alguien llene el disco.
+MAX_PROGRESO_BYTES = 120_000
+
+
 def get_db():
     if "db" not in g:
         g.db = sqlite3.connect(DB_PATH)
@@ -114,7 +137,7 @@ app.jinja_env.globals["token_csrf"] = token_csrf
 def verificar_csrf():
     # Telegram no envía formularios: su webhook se protege con un secreto propio.
     if request.method == "POST" and request.endpoint != "soporte.webhook":
-        enviado = request.form.get("csrf", "")
+        enviado = request.form.get("csrf", "") or request.headers.get("X-CSRF", "")
         if not enviado or not secrets.compare_digest(enviado, session.get("csrf", "")):
             abort(400)
 
@@ -138,12 +161,19 @@ def login_required(vista):
 def destino_seguro(ruta):
     # Solo se permite volver a rutas de este mismo sitio.
     if ruta and ruta.startswith("/") and not ruta.startswith("//") and "\\" not in ruta:
-        return ruta
+        # "/" es la portada pública; después de entrar queremos el panel.
+        return url_for("inicio") if ruta == "/" else ruta
     return url_for("inicio")
 
 
 # ---------------------------------------------------------------------- vistas
 @app.route("/")
+def portada():
+    """Página principal pública: quiénes somos, visión, misión, video y consejos."""
+    return render_template("portada.html", logueado="usuario_id" in session)
+
+
+@app.route("/panel")
 @login_required
 def inicio():
     modulos = []
@@ -158,6 +188,40 @@ def inicio():
         ]
         modulos.append({**modulo, "niveles": niveles})
     return render_template("inicio.html", modulos=modulos)
+
+
+@app.route("/practica")
+@login_required
+def practica():
+    return render_template("practica.html")
+
+
+@app.route("/api/progreso", methods=["GET", "POST"])
+@login_required
+def api_progreso():
+    """Lee o guarda el progreso del alumno en sesión. Solo JavaScript lo usa."""
+    db = get_db()
+    uid = session["usuario_id"]
+    if request.method == "POST":
+        crudo = request.get_data(cache=False)
+        if len(crudo) > MAX_PROGRESO_BYTES:
+            return {"error": "Progreso demasiado grande"}, 413
+        try:
+            datos = json.loads(crudo.decode("utf-8"))
+        except ValueError:
+            return {"error": "JSON inválido"}, 400
+        if not isinstance(datos, dict):
+            return {"error": "Se esperaba un objeto"}, 400
+        db.execute(
+            "INSERT INTO progreso (usuario_id, datos, actualizado) VALUES (?, ?, datetime('now')) "
+            "ON CONFLICT(usuario_id) DO UPDATE SET datos = excluded.datos, actualizado = excluded.actualizado",
+            (uid, json.dumps(datos, ensure_ascii=False, separators=(",", ":"))),
+        )
+        db.commit()
+        return {"ok": True}
+    fila = db.execute("SELECT datos FROM progreso WHERE usuario_id = ?", (uid,)).fetchone()
+    datos = json.loads(fila["datos"]) if fila else {}
+    return {"token": token_csrf(), "nombre": session.get("nombre", ""), "datos": datos}
 
 
 @app.route("/registro", methods=["GET", "POST"])

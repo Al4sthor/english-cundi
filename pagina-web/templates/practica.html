@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block titulo %}Práctica · English Cundi{% endblock %}
+{% block clase_body %}pagina-app pagina-practica{% endblock %}
+{% block cuerpo %}
+{% set activa = 'practica' %}
+{% include "_cabecera.html" %}
+
+<main id="contenido" class="app practica">
+  <div id="app"></div>
+  <noscript><p class="aviso aviso-error">La práctica necesita JavaScript. Actívalo en tu navegador y recarga la página.</p></noscript>
+</main>
+
+<div class="carril" aria-hidden="true"></div>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/diagnostico.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/practica.css') }}">
+<script src="{{ url_for('static', filename='js/progreso.js') }}"></script>
+<script src="{{ url_for('static', filename='js/practica.js') }}"></script>
+{% endblock %}
