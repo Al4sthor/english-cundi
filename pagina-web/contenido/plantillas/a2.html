@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="David Estiven Sánchez Yomayuza">
+  <meta name="theme-color" content="#11151a">
+  <title>Plantillas A2 · English Cundi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/estilo.css">
+  <link rel="stylesheet" href="/static/css/plantillas.css">
+  <link rel="icon" href="/static/img/logo.svg" type="image/svg+xml">
+</head>
+<body class="pagina-app">
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+  <header class="barra">
+    <div class="barra-interior">
+      <a class="logo" href="/">
+        <img src="/static/img/logo.svg" alt="" width="40" height="40">
+        <span>English Cundi</span>
+      </a>
+      <a class="boton boton-fantasma" href="/panel">Volver al panel</a>
+    </div>
+  </header>
+
+  <div class="pl">
+    <main id="contenido" class="pl-cuerpo">
+      <noscript><p class="aviso aviso-error">Las plantillas necesitan JavaScript. Actívalo en tu navegador y recarga la página.</p></noscript>
+    </main>
+  </div>
+  <div class="carril" aria-hidden="true"></div>
+  <a class="boton-ayuda" href="/ayuda" target="_blank" rel="noopener"
+     title="Te atendemos por Telegram" aria-label="¿Necesitas ayuda? Te atendemos por Telegram">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M21.9 4.6 18.7 19.7c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.4l-4.8-1.5c-1-.3-1-1 .2-1.5L20.5 3.1c.9-.3 1.6.2 1.4 1.5z"/></svg>
+    <span>¿Necesitas ayuda?</span>
+  </a>
+
+  <script>
+  /* Plantillas A2. Infografías: Wilder Ortiz · Ejercicios y página: David Sánchez.
+     Para cambiar un tema basta editar sus textos aquí. */
+  window.PLANTILLAS = {
+    id: 'a2', nivel: 'A2',
+    titulo: 'Plantillas A2',
+    descripcion: 'Ocho temas para dar el siguiente paso: pasado, comparaciones, futuro y más. Están basados en lo que pregunta el diagnóstico A2.',
+    temas: [
+      { id: 'pasado-simple', titulo: 'Pasado simple', subtitulo: 'regulares e irregulares', tema: 'Verbos',
+        img: '/static/img/ilustraciones/calendario.svg',
+        idea: 'Se usa para acciones terminadas en el pasado (yesterday, last week, in 2020). Los verbos regulares terminan en -ed; los irregulares cambian.',
+        tabla: { cab: ['Presente', 'Pasado', 'Tipo'], filas: [
+          ['work', 'worked', 'regular'], ['study', 'studied', 'regular'], ['go', 'went', 'irregular'],
+          ['have', 'had', 'irregular'], ['see', 'saw', 'irregular'], ['buy', 'bought', 'irregular'] ] },
+        claves: ['Pregunta y negativa con did: Did you go? · I didn’t go.', 'Después de did / didn’t el verbo vuelve a presente: She didn’t buy (no “bought”).'],
+        ejemplos: [['Yesterday I went to the cinema.', 'Ayer fui a cine.'], ['We studied for the exam last night.', 'Estudiamos para el examen anoche.'], ['Did you see the match?', '¿Viste el partido?']],
+        ejercicios: [
+          { t: 'mc', q: 'Yesterday I ___ to the cinema with my friends.', o: ['go', 'went', 'gone'], a: 1, e: 'Go en pasado es went.' },
+          { t: 'drag', q: 'Last weekend we ___ a new phone, but we ___ use it.', banco: ['bought', 'didn’t', 'buy', 'don’t'], a: ['bought', 'didn’t'], e: 'Bought (pasado de buy) · didn’t (negativa en pasado).' },
+          { t: 'match', q: 'Une cada verbo con su pasado.', pares: [['eat', 'ate'], ['write', 'wrote'], ['take', 'took'], ['come', 'came']], e: 'Verbos irregulares frecuentes.' } ] },
+
+      { id: 'comparativos', titulo: 'Comparativos', subtitulo: 'más… que · el más…', tema: 'Gramática',
+        img: '/static/img/ilustraciones/balanza.svg',
+        idea: 'Para comparar dos cosas: adjetivo corto + -er + than. Para la más extrema: the + adjetivo + -est.',
+        tabla: { cab: ['Adjetivo', 'Comparativo', 'Superlativo'], filas: [
+          ['big', 'bigger than', 'the biggest'], ['easy', 'easier than', 'the easiest'],
+          ['expensive', 'more expensive than', 'the most expensive'], ['good', 'better than', 'the best'], ['bad', 'worse than', 'the worst'] ] },
+        claves: ['Adjetivos largos (3 sílabas o más) usan more / the most.', 'Good y bad son irregulares: better / best, worse / worst.'],
+        ejemplos: [['My house is bigger than yours.', 'Mi casa es más grande que la tuya.'], ['This is the most expensive phone.', 'Este es el celular más caro.'], ['English is easier than Chinese.', 'El inglés es más fácil que el chino.']],
+        ejercicios: [
+          { t: 'mc', q: 'My house is ___ than yours.', o: ['big', 'bigger', 'biggest'], a: 1, e: 'Comparando dos casas: bigger than.' },
+          { t: 'drag', q: 'This book is ___ interesting than the film. It is the ___ book I have.', banco: ['more', 'best', 'most', 'better'], a: ['more', 'best'], e: 'More interesting than · the best.' },
+          { t: 'fill', q: 'Today is ___ than yesterday. (bad)', a: ['worse'], e: 'Bad → worse → the worst.' } ] },
+
+      { id: 'futuro', titulo: 'Futuro', subtitulo: 'going to · will', tema: 'Viajes',
+        img: '/static/img/ilustraciones/avion.svg',
+        idea: 'Going to es para planes que ya decidiste. Will es para decisiones del momento, promesas y predicciones.',
+        tabla: { cab: ['Forma', 'Uso', 'Ejemplo'], filas: [
+          ['be + going to + verbo', 'plan decidido', 'We are going to visit my uncle.'],
+          ['will + verbo', 'decisión del momento', 'I’m hungry. I will make a sandwich.'],
+          ['will + verbo', 'predicción', 'It will rain tomorrow.'] ] },
+        claves: ['Negativa: I’m not going to… · I won’t (will not)…', 'Palabras de futuro: tomorrow, next week, next year, soon.'],
+        ejemplos: [['We are going to travel to Cartagena in December.', 'Vamos a viajar a Cartagena en diciembre.'], ['I will call you later.', 'Te llamo más tarde.'], ['She won’t come to the party.', 'Ella no vendrá a la fiesta.']],
+        ejercicios: [
+          { t: 'mc', q: 'We ___ visit my uncle next weekend. (ya lo planeamos)', o: ['are going to', 'went', 'visiting'], a: 0, e: 'Plan decidido: are going to.' },
+          { t: 'drag', q: 'The phone is ringing! I ___ answer it. Next year they ___ going to study in Bogotá.', banco: ['will', 'are', 'is', 'did'], a: ['will', 'are'], e: 'Decisión del momento: will · plan: are going to.' },
+          { t: 'order', fichas: ['going', 'I', 'to', 'am', 'study', 'tonight'], a: 'I am going to study tonight', e: 'Sujeto + am/is/are + going to + verbo.' } ] },
+
+      { id: 'cantidades', titulo: 'How much / How many', subtitulo: 'compras y cantidades', tema: 'Compras',
+        img: '/static/img/ilustraciones/compras.svg',
+        idea: 'How many se usa con cosas que se cuentan (apples, books). How much con lo que no se cuenta (water, money) y para preguntar precios.',
+        tabla: { cab: ['', 'Contables', 'No contables'], filas: [
+          ['Pregunta', 'How many eggs?', 'How much milk?'], ['Afirmativa', 'some apples', 'some bread'],
+          ['Negativa', 'not many people', 'not much time'], ['Precio', '—', 'How much is it?'] ] },
+        claves: ['Some en afirmativas y ofrecimientos; any en negativas y preguntas.', 'En la tienda: Can I pay by card? · Can I try it on?'],
+        ejemplos: [['How much is this jacket?', '¿Cuánto cuesta esta chaqueta?'], ['How many brothers do you have?', '¿Cuántos hermanos tienes?'], ['There isn’t any milk.', 'No hay leche.']],
+        ejercicios: [
+          { t: 'mc', q: 'How ___ water do you drink every day?', o: ['many', 'much', 'any'], a: 1, e: 'Water no se cuenta: how much.' },
+          { t: 'drag', q: 'How ___ apples do we need? We need ___ apples and some sugar.', banco: ['many', 'some', 'much', 'any'], a: ['many', 'some'], e: 'Apples se cuentan: how many · afirmativa: some.' },
+          { t: 'match', q: 'Une cada frase de compras.', pares: [['How much is it?', '¿Cuánto cuesta?'], ['Can I pay by card?', '¿Puedo pagar con tarjeta?'], ['Can I try it on?', '¿Me lo puedo probar?'], ['It’s too expensive.', 'Es demasiado caro.']], e: 'Frases útiles en una tienda.' } ] },
+
+      { id: 'pasado-continuo', titulo: 'Pasado continuo', subtitulo: 'estaba haciendo algo', tema: 'Verbos',
+        img: '/static/img/ilustraciones/ahora.svg',
+        idea: 'Describe algo que estaba pasando en un momento del pasado. Se forma con was / were + verbo -ing. Muchas veces otra acción lo interrumpe (when + pasado simple).',
+        tabla: { cab: ['Persona', 'Forma', 'Ejemplo'], filas: [
+          ['I / He / She / It', 'was + -ing', 'She was cooking.'], ['You / We / They', 'were + -ing', 'They were sleeping.'],
+          ['Con interrupción', 'was + -ing … when + pasado', 'I was sleeping when you called.'] ] },
+        claves: ['While + pasado continuo: While I was walking, it started to rain.', 'Negativa: wasn’t / weren’t + -ing.'],
+        ejemplos: [['She was doing her homework when I called her.', 'Ella estaba haciendo la tarea cuando la llamé.'], ['We were watching a film at 9 pm.', 'Estábamos viendo una película a las 9.'], ['What were you doing?', '¿Qué estabas haciendo?']],
+        ejercicios: [
+          { t: 'mc', q: 'She ___ her homework when I called her.', o: ['was doing', 'is doing', 'does'], a: 0, e: 'Acción en progreso interrumpida: was doing.' },
+          { t: 'drag', q: 'They ___ playing football when it ___ to rain.', banco: ['were', 'started', 'was', 'start'], a: ['were', 'started'], e: 'They were playing (en progreso) · it started (interrupción).' },
+          { t: 'fill', q: 'I ___ sleeping at midnight. (be, pasado)', a: ['was'], e: 'Con I: was.' } ] },
+
+      { id: 'presente-perfecto', titulo: 'Presente perfecto', subtitulo: 'for · since · ever', tema: 'Gramática',
+        img: '/static/img/ilustraciones/rutina.svg',
+        idea: 'Une el pasado con el presente: algo que empezó antes y sigue, o experiencias de tu vida. Se forma con have / has + participio.',
+        tabla: { cab: ['Palabra', 'Uso', 'Ejemplo'], filas: [
+          ['for', 'duración', 'I have lived here for five years.'], ['since', 'punto de inicio', 'I have lived here since 2019.'],
+          ['ever', 'experiencias (pregunta)', 'Have you ever been to Cartagena?'], ['never', 'nunca en la vida', 'She has never eaten sushi.'] ] },
+        claves: ['He / she / it usan has: She has finished.', 'Participios irregulares: be → been, see → seen, eat → eaten, go → gone.'],
+        ejemplos: [['I have lived in Chía since 2019.', 'Vivo en Chía desde 2019.'], ['We have known each other for ten years.', 'Nos conocemos hace diez años.'], ['Have you ever flown in a plane?', '¿Alguna vez has volado en avión?']],
+        ejercicios: [
+          { t: 'mc', q: 'I have lived in Chía ___ 2019.', o: ['for', 'since', 'ago'], a: 1, e: '2019 es el punto de inicio: since.' },
+          { t: 'drag', q: 'She ___ studied English ___ three years.', banco: ['has', 'for', 'have', 'since'], a: ['has', 'for'], e: 'She has · three years es duración: for.' },
+          { t: 'fill', q: 'Have you ___ been to the sea? (alguna vez)', a: ['ever'], e: 'Ever pregunta por experiencias.' } ] },
+
+      { id: 'condicional', titulo: 'Primer condicional', subtitulo: 'if + presente, will', tema: 'Clima',
+        img: '/static/img/ilustraciones/clima.svg',
+        idea: 'Habla de algo posible en el futuro y su resultado: If + presente simple, will + verbo.',
+        tabla: { cab: ['Condición (if)', 'Resultado (will)'], filas: [
+          ['If it rains tomorrow,', 'we will stay at home.'], ['If you study,', 'you will pass the exam.'], ['If she is tired,', 'she won’t go out.'] ] },
+        claves: ['Después de if NO va will: If it rains (no “if it will rain”).', 'Clima: sunny, rainy, cloudy, windy, cold, hot.'],
+        ejemplos: [['If it rains, I will take an umbrella.', 'Si llueve, llevaré sombrilla.'], ['If you call me, I will help you.', 'Si me llamas, te ayudaré.'], ['It is cloudy today.', 'Hoy está nublado.']],
+        ejercicios: [
+          { t: 'mc', q: 'If it rains tomorrow, we ___ at home.', o: ['stay', 'will stay', 'stayed'], a: 1, e: 'Resultado: will stay.' },
+          { t: 'drag', q: 'If you ___ hard, you ___ pass the test.', banco: ['study', 'will', 'studied', 'would'], a: ['study', 'will'], e: 'If + presente (study), will + verbo.' },
+          { t: 'match', q: 'Une cada palabra del clima.', pares: [['sunny', 'soleado'], ['rainy', 'lluvioso'], ['cloudy', 'nublado'], ['windy', 'con viento']], e: 'Vocabulario del clima.' } ] },
+
+      { id: 'trabajo-salud', titulo: 'Trabajo y salud', subtitulo: 'profesiones y el médico', tema: 'Trabajo',
+        img: '/static/img/ilustraciones/salud.svg',
+        idea: 'Para hablar de trabajos usamos a / an + profesión. En el médico decimos qué nos duele con have a + -ache o It hurts.',
+        tabla: { cab: ['Profesión', 'Qué hace', 'Salud', 'Significa'], filas: [
+          ['hairdresser', 'cuts your hair', 'I have a headache.', 'Me duele la cabeza.'],
+          ['nurse', 'helps in a hospital', 'I have a sore throat.', 'Me duele la garganta.'],
+          ['waiter', 'serves food', 'My back hurts.', 'Me duele la espalda.'],
+          ['engineer', 'designs things', 'You should rest.', 'Deberías descansar.'] ] },
+        claves: ['Consejos con should: You should drink water. · You shouldn’t smoke.', 'Siempre a / an con la profesión: She is a nurse. He is an engineer.'],
+        ejemplos: [['A person who cuts your hair is a hairdresser.', 'Quien corta el pelo es un peluquero.'], ['I have a headache.', 'Me duele la cabeza.'], ['You should see a doctor.', 'Deberías ver a un médico.']],
+        ejercicios: [
+          { t: 'mc', q: 'A person who cuts your hair is a ___.', o: ['waiter', 'hairdresser', 'nurse'], a: 1, e: 'Hairdresser es peluquero.' },
+          { t: 'drag', q: 'I have a ___ . You ___ take a pill and rest.', banco: ['headache', 'should', 'shouldn’t', 'hairdresser'], a: ['headache', 'should'], e: 'Headache (dolor de cabeza) · should (consejo).' },
+          { t: 'match', q: 'Une cada profesión.', pares: [['nurse', 'enfermero(a)'], ['waiter', 'mesero'], ['engineer', 'ingeniero(a)'], ['lawyer', 'abogado(a)']], e: 'Profesiones frecuentes.' } ] }
+    ]
+  };
+  </script>
+  <script src="/static/js/progreso.js"></script>
+  <script src="/static/js/fiesta.js"></script>
+  <script src="/static/js/plantillas.js"></script>
+</body>
+</html>

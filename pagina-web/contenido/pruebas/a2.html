@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="David Estiven Sánchez Yomayuza">
+  <meta name="theme-color" content="#11151a">
+  <title>Prueba de conocimiento A2 · English Cundi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/estilo.css">
+  <link rel="stylesheet" href="/static/css/diagnostico.css">
+  <link rel="icon" href="/static/img/logo.svg" type="image/svg+xml">
+</head>
+<body class="pagina-app pagina-prueba">
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+  <header class="barra">
+    <div class="barra-interior">
+      <a class="logo" href="/">
+        <img src="/static/img/logo.svg" alt="" width="40" height="40">
+        <span>English Cundi</span>
+      </a>
+      <div class="barra-prueba">
+        <p class="reloj" id="reloj" hidden>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v5l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"/></svg>
+          <span>00:00</span>
+        </p>
+        <a class="boton boton-fantasma salir-prueba" href="/panel">Salir</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="prueba">
+    <ol class="pasos" id="pasos" aria-label="Paradas de la prueba" hidden></ol>
+    <main id="contenido" class="prueba-cuerpo">
+      <noscript><p class="aviso aviso-error">Esta prueba necesita JavaScript. Actívalo en tu navegador y recarga la página.</p></noscript>
+    </main>
+  </div>
+
+  <dialog id="confirmar" aria-labelledby="confirmar-t">
+    <div class="interior">
+      <h2 id="confirmar-t">¿Terminar la prueba?</h2>
+      <p></p>
+      <div class="acciones">
+        <button type="button" class="boton boton-principal" data-si>Ver mi calificación</button>
+        <button type="button" class="boton boton-claro" data-no>Seguir revisando</button>
+      </div>
+    </div>
+  </dialog>
+  <div class="carril" aria-hidden="true"></div>
+  <a class="boton-ayuda" href="/ayuda" target="_blank" rel="noopener"
+     title="Te atendemos por Telegram" aria-label="¿Necesitas ayuda? Te atendemos por Telegram">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M21.9 4.6 18.7 19.7c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.4l-4.8-1.5c-1-.3-1-1 .2-1.5L20.5 3.1c.9-.3 1.6.2 1.4 1.5z"/></svg>
+    <span>¿Necesitas ayuda?</span>
+  </a>
+
+  <script>
+  /* Prueba de conocimiento A2. Evalúa los 8 temas de las plantillas A2.
+     Preguntas: Wilder Ortiz y David Sánchez · Página y calificación: David Sánchez.
+     Se aprueba con 70 % o más. Usa el mismo motor del diagnóstico (diagnostico.js). */
+  window.DIAGNOSTICO = {
+    id: 'prueba-a2',
+    tipo: 'prueba',
+    aprobar: 70,
+    titulo: 'Prueba de conocimiento A2',
+    descripcion: 'Demuestra lo que aprendiste en las plantillas A2: pasado simple y continuo, comparativos, futuro, how much/many, presente perfecto, primer condicional, trabajo y salud.',
+    textoEmpezar: 'Empezar la prueba',
+    nota: 'Tu calificación queda guardada en tu progreso. Puedes repetir la prueba; se guarda tu mejor resultado.',
+    minutos: '15 a 20',
+    escuchas: 2,
+    velocidad: 0.9,
+    niveles: [
+      { min: 0, id: 'No aprobado', titulo: 'Sigue practicando',
+        texto: 'Todavía no alcanzas el 70 %. Revisa abajo las respuestas que fallaste, repasa esos temas en las plantillas A2 y vuelve a intentarlo.' },
+      { min: 70, id: 'Aprobado', titulo: '¡Pasaste la prueba A2!',
+        texto: 'Manejas los temas del nivel A2. Sigue practicando todos los días en la zona de práctica para no olvidarlo.' },
+      { min: 90, id: 'Excelente', titulo: '¡A2 superado con honores!',
+        texto: 'Casi no tuviste errores. Tu inglés está listo para empezar el nivel B1.' }
+    ],
+    secciones: [
+      { titulo: 'Vocabulario', corto: 'Vocabulario', hab: 'Vocabulario',
+        instr: 'Elige la palabra correcta.',
+        items: [
+          { t: 'mc', q: 'A person who serves food in a restaurant is a ___.', o: ['waiter', 'nurse', 'lawyer'], a: 0, e: 'Waiter es mesero.' },
+          { t: 'mc', q: 'I have a ___. My head hurts.', o: ['sore throat', 'headache', 'backache'], a: 1, e: 'Headache es dolor de cabeza.' },
+          { t: 'mc', q: 'It’s ___ today. Take an umbrella!', o: ['sunny', 'rainy', 'hot'], a: 1, e: 'Rainy: lluvioso, por eso la sombrilla.' },
+          { t: 'mc', q: '“Can I try it on?” is a question you ask in a ___.', o: ['clothes shop', 'hospital', 'bank'], a: 0, e: 'Try it on es probarse algo, en una tienda de ropa.' },
+          { t: 'mc', q: 'The past of “buy” is ___.', o: ['buyed', 'bought', 'brought'], a: 1, e: 'Buy → bought.' }
+        ] },
+      { titulo: 'Gramática', corto: 'Gramática', hab: 'Gramática',
+        instr: 'Elige la opción que completa bien la oración.',
+        items: [
+          { t: 'mc', q: 'Last summer we ___ to Santa Marta.', o: ['go', 'went', 'have gone'], a: 1, e: 'Last summer: pasado simple, went.' },
+          { t: 'mc', q: 'Did you ___ the news yesterday?', o: ['see', 'saw', 'seen'], a: 0, e: 'Después de did el verbo va en presente: see.' },
+          { t: 'mc', q: 'This exercise is ___ than the first one.', o: ['easy', 'easier', 'easiest'], a: 1, e: 'Comparando dos: easier than.' },
+          { t: 'mc', q: 'It is the ___ restaurant in town.', o: ['more expensive', 'most expensive', 'expensivest'], a: 1, e: 'Superlativo de expensive: the most expensive.' },
+          { t: 'mc', q: 'Look at those clouds! It ___ rain.', o: ['is going to', 'went to', 'rains'], a: 0, e: 'Predicción con evidencia: is going to.' },
+          { t: 'mc', q: 'How ___ students are in your class?', o: ['much', 'many', 'any'], a: 1, e: 'Students se cuentan: how many.' },
+          { t: 'mc', q: 'I ___ dinner when the lights went out.', o: ['was cooking', 'cook', 'am cooking'], a: 0, e: 'Acción en progreso interrumpida: was cooking.' },
+          { t: 'mc', q: 'If you don’t hurry, you ___ the bus.', o: ['miss', 'will miss', 'missed'], a: 1, e: 'Primer condicional: will miss.' }
+        ] },
+      { titulo: 'Completa la oración', corto: 'Completa', hab: 'Gramática',
+        instr: 'Escribe la palabra que falta. Una sola palabra por espacio.',
+        items: [
+          { t: 'fill', q: 'She has worked here ___ 2020. (for / since)', a: ['since'], e: '2020 es el inicio: since.' },
+          { t: 'fill', q: 'We have known them ___ ten years. (for / since)', a: ['for'], e: 'Ten years es duración: for.' },
+          { t: 'fill', q: 'Today is ___ than yesterday. (good)', a: ['better'], e: 'Good → better → the best.' },
+          { t: 'fill', q: 'They ___ playing when it started to rain. (be, pasado)', a: ['were'], e: 'Con they: were playing.' },
+          { t: 'fill', q: 'You ___ drink more water. (consejo)', a: ['should'], e: 'Para dar consejos: should.' }
+        ] },
+      { titulo: 'Une las palabras', corto: 'Une', hab: 'Vocabulario',
+        instr: 'Elige el significado de cada palabra en el menú.',
+        items: [
+          { t: 'match', q: 'Une cada verbo con su pasado.',
+            pares: [
+              ['go', 'went'],
+              ['eat', 'ate'],
+              ['write', 'wrote'],
+              ['have', 'had'],
+              ['take', 'took']
+            ],
+            e: 'Repasa los verbos irregulares del tema Pasado simple.' }
+        ] },
+      { titulo: 'Ordena la oración', corto: 'Ordena', hab: 'Gramática',
+        instr: 'Toca las palabras en el orden correcto para formar la oración.',
+        items: [
+          { t: 'order', q: 'Forma una pregunta en presente perfecto.', fichas: ['you', 'Have', 'been', 'ever', 'to Cartagena', '?'], a: 'Have you ever been to Cartagena?', e: 'Have + sujeto + ever + participio.' },
+          { t: 'order', q: 'Forma una oración con going to.', fichas: ['going', 'We', 'to', 'are', 'travel', 'tomorrow'], a: 'We are going to travel tomorrow', e: 'Sujeto + are + going to + verbo.' },
+          { t: 'order', q: 'Forma un primer condicional.', fichas: ['If', 'it', 'rains', ',', 'we', 'will', 'stay home'], a: 'If it rains, we will stay home', e: 'If + presente, will + verbo.' }
+        ] },
+      { titulo: 'Lectura', corto: 'Lectura', hab: 'Lectura',
+        instr: 'Lee el texto y responde. Puedes mirar el texto cuando quieras.',
+        textoTitulo: 'A trip to the coast',
+        texto: [
+          'Last December, Daniel travelled to Cartagena with his cousins. They stayed in a small hotel near the beach. The weather was hotter than in Chía, so they swam every day.',
+          'One afternoon, while they were walking in the old city, it started to rain. They went into a café and had a coffee. Daniel has visited the coast three times, but he says this was the best trip. Next year he is going to visit San Andrés.'
+        ],
+        items: [
+          { t: 'mc', q: 'Daniel travelled alone.', o: ['True', 'False'], a: 1, e: 'Viajó with his cousins.' },
+          { t: 'mc', q: 'What were they doing when it started to rain?', o: ['Swimming', 'Walking in the old city', 'Drinking coffee'], a: 1, e: 'While they were walking in the old city, it started to rain.' },
+          { t: 'mc', q: 'How was the weather in Cartagena?', o: ['Colder than in Chía', 'Hotter than in Chía', 'The same'], a: 1, e: 'The weather was hotter than in Chía.' },
+          { t: 'mc', q: 'What are his plans for next year?', o: ['To visit San Andrés', 'To stay in Chía', 'To visit Cartagena again'], a: 0, e: 'Next year he is going to visit San Andrés.' }
+        ] },
+      { titulo: 'Escucha', corto: 'Escucha', hab: 'Escucha',
+        instr: 'Presiona Escuchar y responde. Cada audio se puede oír dos veces.',
+        items: [
+          { t: 'mc', q: '¿Cuánto cuesta la chaqueta?',
+            audio: [{ t: 'Excuse me, how much is this jacket?', v: 'f' }, { t: 'It is forty thousand pesos.', v: 'm' }],
+            o: ['14.000 pesos', '40.000 pesos', '400.000 pesos'], a: 1, e: 'Forty thousand: 40.000.' },
+          { t: 'mc', q: 'What did the woman do yesterday?',
+            audio: [{ t: 'Yesterday I visited my grandmother and then I went to the gym.', v: 'f' }],
+            o: ['She studied and cooked.', 'She visited her grandmother and went to the gym.', 'She went to the cinema.'], a: 1, e: 'Visited my grandmother … went to the gym.' },
+          { t: 'fill', q: 'Completa: If you study, you will ___ the exam.',
+            audio: [{ t: 'Don’t worry. If you study, you will pass the exam.', v: 'm' }],
+            a: ['pass'], e: 'Escuchaste pass the exam (aprobar el examen).' }
+        ] }
+    ]
+  };
+  </script>
+  <script src="/static/js/progreso.js"></script>
+  <script src="/static/js/fiesta.js"></script>
+  <script src="/static/js/diagnostico.js"></script>
+</body>
+</html>

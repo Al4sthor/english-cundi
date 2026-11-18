@@ -36,7 +36,7 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timedelta, timezone
 
-from flask import Blueprint, current_app, request, session
+from flask import Blueprint, current_app, redirect, request, session
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))      # comunicacion-chatbot/
 RAIZ = os.path.dirname(BASE_DIR)
@@ -667,6 +667,15 @@ def webhook():
         # Se responde 200 igual: si no, Telegram reintenta el mismo mensaje sin fin.
         log.exception("Error atendiendo un mensaje de Telegram")
     return "ok"
+
+
+@soporte.route("/ayuda")
+def ayuda():
+    """Botón de ayuda de las páginas sueltas de contenido/ (plantillas, pruebas,
+    diagnósticos): esas páginas no pueden armar el enlace firmado, así que
+    enlazan aquí y Flask las manda al bot con el alumno ya identificado."""
+    enlace = enlace_ayuda()
+    return redirect(enlace or "/panel")
 
 
 def iniciar(app):

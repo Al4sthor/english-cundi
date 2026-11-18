@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="David Estiven Sánchez Yomayuza">
+  <meta name="theme-color" content="#11151a">
+  <title>Plantillas A1 · English Cundi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/estilo.css">
+  <link rel="stylesheet" href="/static/css/plantillas.css">
+  <link rel="icon" href="/static/img/logo.svg" type="image/svg+xml">
+</head>
+<body class="pagina-app">
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+  <header class="barra">
+    <div class="barra-interior">
+      <a class="logo" href="/">
+        <img src="/static/img/logo.svg" alt="" width="40" height="40">
+        <span>English Cundi</span>
+      </a>
+      <a class="boton boton-fantasma" href="/panel">Volver al panel</a>
+    </div>
+  </header>
+
+  <div class="pl">
+    <main id="contenido" class="pl-cuerpo">
+      <noscript><p class="aviso aviso-error">Las plantillas necesitan JavaScript. Actívalo en tu navegador y recarga la página.</p></noscript>
+    </main>
+  </div>
+  <div class="carril" aria-hidden="true"></div>
+  <a class="boton-ayuda" href="/ayuda" target="_blank" rel="noopener"
+     title="Te atendemos por Telegram" aria-label="¿Necesitas ayuda? Te atendemos por Telegram">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M21.9 4.6 18.7 19.7c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.4l-4.8-1.5c-1-.3-1-1 .2-1.5L20.5 3.1c.9-.3 1.6.2 1.4 1.5z"/></svg>
+    <span>¿Necesitas ayuda?</span>
+  </a>
+
+  <script>
+  /* Plantillas A1. Infografías: Kevin Contreras · Ejercicios y página: David Sánchez.
+     Para cambiar un tema basta editar sus textos aquí. Tipos de ejercicio:
+     mc (elegir), fill (escribir), drag (arrastrar a ___), match (emparejar), order (ordenar). */
+  window.PLANTILLAS = {
+    id: 'a1', nivel: 'A1',
+    titulo: 'Plantillas A1',
+    descripcion: 'Ocho temas básicos de inglés. Cada uno tiene una infografía corta y ejercicios para practicar. Están basados en lo que pregunta el diagnóstico A1.',
+    temas: [
+      { id: 'to-be', titulo: 'Verbo to be', subtitulo: 'am · is · are', tema: 'Gramática',
+        img: '/static/img/ilustraciones/personas.svg',
+        idea: 'To be significa “ser” o “estar”. Cambia según la persona: I am, he/she/it is, you/we/they are.',
+        tabla: { cab: ['Persona', 'Afirmativa', 'Negativa', 'Pregunta'], filas: [
+          ['I', 'I am (I’m)', 'I am not', 'Am I…?'],
+          ['He / She / It', 'She is (she’s)', 'She is not (isn’t)', 'Is she…?'],
+          ['You / We / They', 'They are (they’re)', 'They are not (aren’t)', 'Are they…?'] ] },
+        claves: ['Para negar, pon not después del verbo: I am not, he is not.', 'Para preguntar, pon el verbo primero: Are you a student?'],
+        ejemplos: [['I am a student.', 'Soy estudiante.'], ['She is from Colombia.', 'Ella es de Colombia.'], ['We are at home.', 'Estamos en casa.'], ['Are you tired?', '¿Estás cansado?']],
+        ejercicios: [
+          { t: 'mc', q: 'My brother ___ a doctor.', o: ['am', 'is', 'are'], a: 1, e: 'Con my brother (he) se usa is.' },
+          { t: 'drag', q: 'I ___ 19 years old and my friends ___ 20.', banco: ['am', 'are', 'is'], a: ['am', 'are'], e: 'I am · my friends (they) are.' },
+          { t: 'fill', q: 'They ___ not at school today.', a: ['are'], e: 'Con they se usa are.' },
+          { t: 'order', fichas: ['you', 'Are', 'a', 'student', '?'], a: 'Are you a student ?', e: 'En la pregunta el verbo va primero.' } ] },
+
+      { id: 'presente-simple', titulo: 'Presente simple', subtitulo: 'rutinas y costumbres', tema: 'Verbos',
+        img: '/static/img/ilustraciones/rutina.svg',
+        idea: 'Se usa para lo que haces siempre o normalmente. Con he, she o it el verbo lleva -s o -es.',
+        tabla: { cab: ['Persona', 'Verbo', 'Ejemplo'], filas: [
+          ['I / You / We / They', 'work', 'They work in Chía.'],
+          ['He / She / It', 'works', 'She works in Chía.'],
+          ['He / She / It (-o, -sh, -ch)', 'goes, watches', 'He watches TV.'],
+          ['He / She / It (have)', 'has', 'It has four legs.'] ] },
+        claves: ['Palabras de frecuencia: always, usually, often, sometimes, never.', 'Van antes del verbo: I usually get up at 6.'],
+        ejemplos: [['I get up at six every day.', 'Me levanto a las seis todos los días.'], ['My mother drinks coffee.', 'Mi mamá toma café.'], ['He goes to school by bus.', 'Él va al colegio en bus.']],
+        ejercicios: [
+          { t: 'mc', q: 'Luis ___ football every Saturday.', o: ['play', 'plays', 'playing'], a: 1, e: 'Con he (Luis) el verbo lleva -s: plays.' },
+          { t: 'drag', q: 'My sister ___ TV and I ___ my homework.', banco: ['watches', 'do', 'does', 'watch'], a: ['watches', 'do'], e: 'She watches · I do.' },
+          { t: 'fill', q: 'She ___ two cats. (have)', a: ['has'], e: 'Con she, have cambia a has.' },
+          { t: 'match', q: 'Une cada palabra con su significado.', pares: [['always', 'siempre'], ['usually', 'normalmente'], ['sometimes', 'a veces'], ['never', 'nunca']], e: 'Son las palabras de frecuencia.' } ] },
+
+      { id: 'do-does', titulo: 'Preguntas y negación', subtitulo: 'do · does · don’t · doesn’t', tema: 'Gramática',
+        img: '/static/img/ilustraciones/pregunta.svg',
+        idea: 'En presente simple las preguntas y las negaciones usan un ayudante: do o does. Con does, el verbo vuelve a su forma normal (sin -s).',
+        tabla: { cab: ['', 'I / You / We / They', 'He / She / It'], filas: [
+          ['Pregunta', 'Do you like pizza?', 'Does she like pizza?'],
+          ['Negativa', 'I don’t like pizza.', 'She doesn’t like pizza.'],
+          ['Respuesta corta', 'Yes, I do. / No, I don’t.', 'Yes, she does. / No, she doesn’t.'] ] },
+        claves: ['Nunca digas “she doesn’t likes”: después de does / doesn’t el verbo no lleva -s.', 'don’t = do not · doesn’t = does not.'],
+        ejemplos: [['Do you live in Chía?', '¿Vives en Chía?'], ['He doesn’t eat meat.', 'Él no come carne.'], ['Does your brother play football?', '¿Tu hermano juega fútbol?']],
+        ejercicios: [
+          { t: 'mc', q: '___ your mother work on Sundays?', o: ['Do', 'Does', 'Is'], a: 1, e: 'Con your mother (she) se usa does.' },
+          { t: 'mc', q: 'She doesn’t ___ coffee.', o: ['drink', 'drinks', 'drinking'], a: 0, e: 'Después de doesn’t el verbo va sin -s.' },
+          { t: 'drag', q: 'I ___ like fish, but my dad ___ like it.', banco: ['don’t', 'doesn’t', 'isn’t'], a: ['don’t', 'doesn’t'], e: 'I don’t · my dad (he) doesn’t.' },
+          { t: 'order', fichas: ['you', 'Where', 'live', 'do', '?'], a: 'Where do you live ?', e: 'Palabra de pregunta + do + sujeto + verbo.' } ] },
+
+      { id: 'there-is', titulo: 'There is / There are', subtitulo: 'la casa y los objetos', tema: 'Casa',
+        img: '/static/img/ilustraciones/casa.svg',
+        idea: 'Se usa para decir que algo “hay” en un lugar. There is con una cosa; there are con varias.',
+        tabla: { cab: ['', 'Singular (1)', 'Plural (2 o más)'], filas: [
+          ['Afirmativa', 'There is a bed.', 'There are two chairs.'],
+          ['Negativa', 'There isn’t a TV.', 'There aren’t any books.'],
+          ['Pregunta', 'Is there a kitchen?', 'Are there any windows?'] ] },
+        claves: ['Partes de la casa: kitchen (cocina), bedroom (habitación), bathroom (baño), living room (sala).', 'Lugares: in (dentro), on (encima), under (debajo), next to (al lado).'],
+        ejemplos: [['There is a cat under the chair.', 'Hay un gato debajo de la silla.'], ['There are three bedrooms in my house.', 'Hay tres habitaciones en mi casa.'], ['Is there a bathroom here?', '¿Hay un baño aquí?']],
+        ejercicios: [
+          { t: 'mc', q: 'There ___ two books on the table.', o: ['is', 'are', 'am'], a: 1, e: 'Two books es plural: there are.' },
+          { t: 'drag', q: 'There ___ a sofa in the living room and there ___ four chairs in the kitchen.', banco: ['is', 'are', 'be'], a: ['is', 'are'], e: 'A sofa (uno) · four chairs (varios).' },
+          { t: 'match', q: 'Une cada lugar de la casa.', pares: [['kitchen', 'cocina'], ['bedroom', 'habitación'], ['bathroom', 'baño'], ['living room', 'sala']], e: 'Partes de la casa.' },
+          { t: 'mc', q: 'The cat is ___ the bed. (debajo)', o: ['on', 'under', 'in'], a: 1, e: 'Under significa debajo.' } ] },
+
+      { id: 'a-an', titulo: 'A / An y la comida', subtitulo: 'artículos y vocabulario', tema: 'Comida',
+        img: '/static/img/ilustraciones/comida.svg',
+        idea: 'A y an significan “un / una”. Usa an cuando la palabra siguiente empieza con sonido de vocal (a, e, i, o, u).',
+        tabla: { cab: ['A (sonido de consonante)', 'An (sonido de vocal)'], filas: [
+          ['a banana', 'an apple'], ['a sandwich', 'an orange'], ['a university', 'an egg'] ] },
+        claves: ['Se mira el sonido, no la letra: a university (suena “yu”), an hour (la h no suena).', 'Comidas del día: breakfast (desayuno), lunch (almuerzo), dinner (cena).'],
+        ejemplos: [['I eat an apple every day.', 'Como una manzana todos los días.'], ['She wants a sandwich.', 'Ella quiere un sándwich.'], ['We have rice for lunch.', 'Almorzamos arroz.']],
+        ejercicios: [
+          { t: 'mc', q: 'This is ___ orange.', o: ['a', 'an', 'the'], a: 1, e: 'Orange empieza con sonido de vocal: an.' },
+          { t: 'drag', q: 'I have ___ egg and ___ banana for breakfast.', banco: ['an', 'a', 'the'], a: ['an', 'a'], e: 'An egg · a banana.' },
+          { t: 'match', q: 'Une cada comida.', pares: [['breakfast', 'desayuno'], ['lunch', 'almuerzo'], ['dinner', 'cena'], ['spoon', 'cuchara']], e: 'Vocabulario de comida.' },
+          { t: 'fill', q: 'You eat soup with a ___ . (cuchara)', a: ['spoon'], e: 'Spoon es cuchara.' } ] },
+
+      { id: 'presente-continuo', titulo: 'Presente continuo', subtitulo: 'lo que pasa ahora', tema: 'Verbos',
+        img: '/static/img/ilustraciones/ahora.svg',
+        idea: 'Se usa para lo que está pasando en este momento. Se forma con to be + verbo terminado en -ing.',
+        tabla: { cab: ['Persona', 'to be + -ing', 'Ejemplo'], filas: [
+          ['I', 'am + -ing', 'I am studying.'],
+          ['He / She / It', 'is + -ing', 'He is watching TV.'],
+          ['You / We / They', 'are + -ing', 'They are playing.'] ] },
+        claves: ['Palabras que avisan: now, right now, at the moment, look!, listen!', 'Ortografía: run → running, write → writing.'],
+        ejemplos: [['I am reading a book now.', 'Estoy leyendo un libro ahora.'], ['She is cooking dinner.', 'Ella está cocinando la cena.'], ['What are you doing?', '¿Qué estás haciendo?']],
+        ejercicios: [
+          { t: 'mc', q: 'He ___ TV at the moment.', o: ['watch', 'watches', 'is watching'], a: 2, e: 'At the moment: presente continuo.' },
+          { t: 'drag', q: 'Look! The children ___ ___ in the park.', banco: ['are', 'playing', 'is', 'play'], a: ['are', 'playing'], e: 'The children (they) are playing.' },
+          { t: 'fill', q: 'What ___ you doing now? (be)', a: ['are'], e: 'Con you se usa are.' },
+          { t: 'order', fichas: ['is', 'She', 'a', 'writing', 'letter'], a: 'She is writing a letter', e: 'Sujeto + is + verbo-ing + complemento.' } ] },
+
+      { id: 'wh', titulo: 'Preguntas Wh-', subtitulo: 'what · where · who · when', tema: 'Gramática',
+        img: '/static/img/ilustraciones/pregunta.svg',
+        idea: 'Son las palabras para preguntar información. Van al principio de la pregunta.',
+        tabla: { cab: ['Palabra', 'Pregunta por…', 'Ejemplo'], filas: [
+          ['What', 'cosas', 'What is your name?'], ['Where', 'lugares', 'Where do you live?'],
+          ['Who', 'personas', 'Who is your teacher?'], ['When', 'tiempo', 'When is your birthday?'],
+          ['How old', 'edad', 'How old are you?'] ] },
+        claves: ['Con to be: Wh- + is/are + sujeto (Where is she?).', 'Con otros verbos: Wh- + do/does + sujeto + verbo (What do you study?).'],
+        ejemplos: [['What is your name?', '¿Cómo te llamas?'], ['How old are you?', '¿Cuántos años tienes?'], ['Where does she work?', '¿Dónde trabaja ella?']],
+        ejercicios: [
+          { t: 'mc', q: '___ is your name?', o: ['Who', 'What', 'Where'], a: 1, e: 'Para el nombre: What.' },
+          { t: 'match', q: 'Une cada pregunta con su respuesta.', pares: [['Where do you live?', 'In Chía.'], ['How old are you?', 'I’m 19.'], ['Who is she?', 'My sister.'], ['When is the class?', 'On Monday.']], e: 'Cada palabra pide una información distinta.' },
+          { t: 'drag', q: '___ do you study? Systems engineering. ___ is your birthday? In May.', banco: ['What', 'When', 'Who'], a: ['What', 'When'], e: 'What (qué) · When (cuándo).' },
+          { t: 'fill', q: '___ old are you? (palabra que falta)', a: ['how'], e: 'How old pregunta la edad.' } ] },
+
+      { id: 'familia', titulo: 'La familia', subtitulo: 'have / has y posesivos', tema: 'Familia',
+        img: '/static/img/ilustraciones/familia.svg',
+        idea: 'Para hablar de tu familia usas have / has (tener) y los posesivos my, your, his, her.',
+        tabla: { cab: ['Persona', 'Posesivo', 'Ejemplo'], filas: [
+          ['I', 'my', 'My mother is a nurse.'], ['You', 'your', 'Your brother is tall.'],
+          ['He', 'his', 'His sister is 10.'], ['She', 'her', 'Her father is a teacher.'] ] },
+        claves: ['I / you / we / they have · he / she / it has.', 'Familia: mother, father, sister, brother, grandmother, grandfather, aunt, uncle, cousin.'],
+        ejemplos: [['I have one brother and two sisters.', 'Tengo un hermano y dos hermanas.'], ['My father’s mother is my grandmother.', 'La mamá de mi papá es mi abuela.'], ['She has a big family.', 'Ella tiene una familia grande.']],
+        ejercicios: [
+          { t: 'mc', q: 'My father’s mother is my ___.', o: ['aunt', 'grandmother', 'sister'], a: 1, e: 'La mamá de tu papá es tu abuela.' },
+          { t: 'drag', q: 'Ana ___ a brother. ___ name is Luis.', banco: ['has', 'have', 'His', 'Her'], a: ['has', 'His'], e: 'Ana (she) has · el nombre de él: his.' },
+          { t: 'match', q: 'Une cada familiar.', pares: [['uncle', 'tío'], ['aunt', 'tía'], ['cousin', 'primo / prima'], ['grandfather', 'abuelo']], e: 'Vocabulario de familia.' },
+          { t: 'fill', q: 'They ___ three children. (have)', a: ['have'], e: 'Con they no cambia: have.' } ] }
+    ]
+  };
+  </script>
+  <script src="/static/js/progreso.js"></script>
+  <script src="/static/js/fiesta.js"></script>
+  <script src="/static/js/plantillas.js"></script>
+</body>
+</html>

@@ -18,7 +18,7 @@
       logros: {},
       misiones: { dia: null, items: [], hechas: {}, cobradas: {} },
       stats: { correctas: 0, incorrectas: 0, segundos: 0, tarjetas: 0, limpiados: 0, modos: {}, temas: {} },
-      errores: [], tarjetas: {}, records: {}, conv: { total: 0 }, diag: {}, pref: { nivel: 'A1' }
+      errores: [], tarjetas: {}, records: {}, conv: { total: 0 }, diag: {}, plantillas: {}, pruebas: {}, pref: { nivel: 'A1' }
     };
   }
 
@@ -197,7 +197,10 @@
     { id: 'xp500', nombre: 'Medio millar', txt: 'Junta 500 XP', ok: function (d) { return d.xp >= 500; } },
     { id: 'limpio', nombre: 'Cuaderno al día', txt: 'Supera 5 errores del cuaderno', ok: function (d) { return d.stats.limpiados >= 5; } },
     { id: 'memoria', nombre: 'Buena memoria', txt: 'Completa un Memory Challenge', ok: function (d) { return !!d.records.memoria; } },
-    { id: 'diag', nombre: 'Ya sé mi nivel', txt: 'Termina un diagnóstico', ok: function (d) { return Object.keys(d.diag).length > 0; } }
+    { id: 'diag', nombre: 'Ya sé mi nivel', txt: 'Termina un diagnóstico', ok: function (d) { return Object.keys(d.diag).length > 0; } },
+    { id: 'plantilla1', nombre: 'Buen estudiante', txt: 'Completa el primer tema de las plantillas', ok: function (d) { return Object.keys(d.plantillas || {}).length >= 1; } },
+    { id: 'plantilla5', nombre: 'Estudiante aplicado', txt: 'Completa 5 temas de las plantillas', ok: function (d) { return Object.keys(d.plantillas || {}).length >= 5; } },
+    { id: 'prueba', nombre: 'Conocimiento comprobado', txt: 'Aprueba una prueba de conocimiento', ok: function (d) { var p = d.pruebas || {}; return Object.keys(p).some(function (k) { return p[k].aprobada; }); } }
   ];
   P.LOGROS = LOGROS;
 

@@ -423,12 +423,13 @@
       h('ul', { class: 'reglas' },
         h('li', {}, h('strong', { text: 'Tiempo: ' }), 'unos ' + D.minutos + ' minutos. No hay un límite estricto.'),
         h('li', {}, h('strong', { text: 'Paradas: ' }), D.secciones.length + ' paradas con ' + totalItems + ' ejercicios en total.'),
+        D.aprobar ? h('li', {}, h('strong', { text: 'Para aprobar: ' }), D.aprobar + ' % de aciertos o más. Si no apruebas, repasa las plantillas y vuelve a intentarlo.') : null,
         h('li', {}, h('strong', { text: 'Escucha: ' }), 'usa audífonos. Cada audio se puede oír ' + MAX_ESCUCHAS + ' veces.'),
         h('li', {}, h('strong', { text: 'Respuestas: ' }), 'puedes volver a una parada anterior y cambiarlas. Si no sabes, intenta, no resta puntos.'),
         h('li', {}, h('strong', { text: 'Avance: ' }), 'se guarda en este navegador, así que puedes cerrar y continuar después.')),
       h('div', { class: 'acciones' },
         h('button', { type: 'button', class: 'boton boton-principal', onclick: empezar },
-          empezada ? 'Continuar la prueba' : 'Empezar el diagnóstico', svg(ICONO.ir)),
+          empezada ? 'Continuar la prueba' : (D.textoEmpezar || 'Empezar el diagnóstico'), svg(ICONO.ir)),
         empezada ? h('button', { type: 'button', class: 'boton boton-claro', onclick: reiniciar }, 'Empezar de nuevo') : null),
       (tts ? null : h('p', { class: 'aviso aviso-error', role: 'alert' },
         'Tu navegador no puede reproducir voz en inglés. Podrás leer el texto de cada audio, pero se recomienda usar Chrome o Edge.')),
@@ -522,6 +523,7 @@
     var c = calcular();
     var pct = c.max ? Math.round((c.total / c.max) * 100) : 0;
     Pr.cargar().then(function () {
+      if (D.tipo === 'prueba') { guardarPrueba(Pr, c, pct); return; }
       var primera = !Pr.datos.diag[D.id];
       Pr.datos.diag[D.id] = { nivel: nivelDe(pct).id, pct: pct, puntos: c.total, max: c.max, fecha: new Date().toLocaleDateString('en-CA') };
       Pr.registrarDia();
@@ -529,6 +531,26 @@
       Pr.revisarLogros();
       Pr.guardarYa();
     });
+  }
+
+  /* Prueba de conocimiento: guarda el mejor intento y si aprobó.
+     La primera vez que aprueba da 60 XP (y el logro "Conocimiento comprobado"). */
+  function guardarPrueba(Pr, c, pct) {
+    if (!Pr.datos.pruebas) { Pr.datos.pruebas = {}; }
+    var antes = Pr.datos.pruebas[D.id] || {};
+    var aprobada = pct >= (D.aprobar || 70);
+    Pr.datos.pruebas[D.id] = {
+      pct: Math.max(pct, antes.pct || 0), ultimo: pct, puntos: c.total, max: c.max,
+      aprobada: aprobada || !!antes.aprobada, intentos: (antes.intentos || 0) + 1,
+      fecha: new Date().toLocaleDateString('en-CA')
+    };
+    Pr.registrarDia();
+    if (aprobada && !antes.aprobada) {
+      Pr.sumarXP(60, 'prueba');
+      if (window.Fiesta) { window.Fiesta.confeti(); }
+    }
+    Pr.revisarLogros();
+    Pr.guardarYa();
   }
 
   function dos(n) { return (n < 10 ? '0' : '') + n; }
@@ -630,7 +652,7 @@
           h('div', { class: 'hab-barra', role: 'img', 'aria-label': nom + ': ' + p + '%' },
             h('span', { style: 'width:' + p + '%' })));
       })),
-      h('p', { class: 'nota', text: 'Este resultado es una guía para ubicarte. Se guarda solo en este navegador.' }),
+      h('p', { class: 'nota', text: D.nota || 'Este resultado es una guía para ubicarte. Se guarda solo en este navegador.' }),
       h('div', { class: 'acciones' },
         h('a', { class: 'boton boton-principal', href: '/panel' }, 'Volver al panel', svg(ICONO.ir)),
         h('button', { type: 'button', class: 'boton boton-claro', onclick: reiniciar }, 'Repetir la prueba'))));

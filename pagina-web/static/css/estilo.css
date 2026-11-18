@@ -633,3 +633,36 @@ a.nivel:focus-visible { outline-color: var(--sec); }
 
 /* mismos bordes que la cabecera (1240 menos el relleno de cada lado) */
 .heroe-interior, .seccion-interior { max-width: 1144px; }
+
+/* ======================================================= animaciones extra
+   Agregadas con las plantillas y las pruebas (David). Todas se apagan si la
+   persona pidió reducir el movimiento en su sistema. */
+.confeti { position: fixed; inset: 0; pointer-events: none; z-index: 80; overflow: hidden; }
+.confeti i { position: absolute; top: -20px; border-radius: 2px; }
+.ilus-panel { width: 54px; height: 54px; float: right; margin: 0 0 0.4rem 0.6rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .confeti i { animation: cae 2.4s cubic-bezier(0.25, 0.6, 0.4, 1) both; }
+  @keyframes cae {
+    0% { transform: translate3d(0, 0, 0) rotate(0); opacity: 1; }
+    100% { transform: translate3d(var(--x), 105vh, 0) rotate(var(--giro)); opacity: 0.9; }
+  }
+  .flota { animation: flota 4.5s ease-in-out infinite; }
+  @keyframes flota { 50% { transform: translateY(-8px) rotate(-3deg); } }
+
+  /* panel: los módulos se inclinan al pasar el mouse y su número late */
+  .modulo { transition: transform 0.35s var(--ease); }
+  .modulo:hover { transform: translateY(-4px) rotate(-0.5deg); }
+  .nivel:not(.nivel-pronto) { transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease); }
+  .nivel:not(.nivel-pronto):hover { transform: translateY(-3px) scale(1.02); }
+  .modulo .escudo { animation: late-escudo 2.8s ease-in-out infinite; }
+  .modulo:nth-of-type(2) .escudo { animation-delay: 0.4s; }
+  .modulo:nth-of-type(3) .escudo { animation-delay: 0.8s; }
+  @keyframes late-escudo { 0%, 70%, 100% { transform: scale(1); } 80% { transform: scale(1.18); } }
+
+  /* portada: las cifras aparecen una tras otra y el título se balancea suave */
+  .datos li { animation: entra 0.7s var(--ease) both; }
+  .datos li:nth-child(2) { animation-delay: 0.12s; }
+  .datos li:nth-child(3) { animation-delay: 0.24s; }
+  .heroe-titulo { transform-origin: 50% 0; animation: entra 0.7s var(--ease) both, cuelga 7s ease-in-out 1s infinite; }
+  @keyframes cuelga { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-0.6deg); } }
+}

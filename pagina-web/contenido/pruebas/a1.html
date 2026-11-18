@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="David Estiven Sánchez Yomayuza">
+  <meta name="theme-color" content="#11151a">
+  <title>Prueba de conocimiento A1 · English Cundi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/estilo.css">
+  <link rel="stylesheet" href="/static/css/diagnostico.css">
+  <link rel="icon" href="/static/img/logo.svg" type="image/svg+xml">
+</head>
+<body class="pagina-app pagina-prueba">
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+  <header class="barra">
+    <div class="barra-interior">
+      <a class="logo" href="/">
+        <img src="/static/img/logo.svg" alt="" width="40" height="40">
+        <span>English Cundi</span>
+      </a>
+      <div class="barra-prueba">
+        <p class="reloj" id="reloj" hidden>
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v5l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"/></svg>
+          <span>00:00</span>
+        </p>
+        <a class="boton boton-fantasma salir-prueba" href="/panel">Salir</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="prueba">
+    <ol class="pasos" id="pasos" aria-label="Paradas de la prueba" hidden></ol>
+    <main id="contenido" class="prueba-cuerpo">
+      <noscript><p class="aviso aviso-error">Esta prueba necesita JavaScript. Actívalo en tu navegador y recarga la página.</p></noscript>
+    </main>
+  </div>
+
+  <dialog id="confirmar" aria-labelledby="confirmar-t">
+    <div class="interior">
+      <h2 id="confirmar-t">¿Terminar la prueba?</h2>
+      <p></p>
+      <div class="acciones">
+        <button type="button" class="boton boton-principal" data-si>Ver mi calificación</button>
+        <button type="button" class="boton boton-claro" data-no>Seguir revisando</button>
+      </div>
+    </div>
+  </dialog>
+  <div class="carril" aria-hidden="true"></div>
+  <a class="boton-ayuda" href="/ayuda" target="_blank" rel="noopener"
+     title="Te atendemos por Telegram" aria-label="¿Necesitas ayuda? Te atendemos por Telegram">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M21.9 4.6 18.7 19.7c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.4l-4.8-1.5c-1-.3-1-1 .2-1.5L20.5 3.1c.9-.3 1.6.2 1.4 1.5z"/></svg>
+    <span>¿Necesitas ayuda?</span>
+  </a>
+
+  <script>
+  /* Prueba de conocimiento A1. Evalúa los 8 temas de las plantillas A1.
+     Preguntas: Wilder Ortiz y David Sánchez · Página y calificación: David Sánchez.
+     Se aprueba con 70 % o más. Usa el mismo motor del diagnóstico (diagnostico.js). */
+  window.DIAGNOSTICO = {
+    id: 'prueba-a1',
+    tipo: 'prueba',
+    aprobar: 70,
+    titulo: 'Prueba de conocimiento A1',
+    descripcion: 'Demuestra lo que aprendiste en las plantillas A1: to be, presente simple, do/does, there is/are, a/an, presente continuo, preguntas Wh- y la familia.',
+    textoEmpezar: 'Empezar la prueba',
+    nota: 'Tu calificación queda guardada en tu progreso. Puedes repetir la prueba; se guarda tu mejor resultado.',
+    minutos: '15',
+    escuchas: 2,
+    velocidad: 0.85,
+    niveles: [
+      { min: 0, id: 'No aprobado', titulo: 'Sigue practicando',
+        texto: 'Todavía no alcanzas el 70 %. Revisa abajo las respuestas que fallaste, repasa esos temas en las plantillas A1 y vuelve a intentarlo. ¡Tú puedes!' },
+      { min: 70, id: 'Aprobado', titulo: '¡Pasaste la prueba A1!',
+        texto: 'Dominas los temas básicos del nivel A1. Ya puedes seguir con las plantillas A2.' },
+      { min: 90, id: 'Excelente', titulo: '¡A1 superado con honores!',
+        texto: 'Casi no tuviste errores. Estás listo para el nivel A2: empieza por el diagnóstico A2 o las plantillas A2.' }
+    ],
+    secciones: [
+      { titulo: 'Vocabulario', corto: 'Vocabulario', hab: 'Vocabulario',
+        instr: 'Elige la palabra correcta.',
+        items: [
+          { t: 'mc', q: 'The room where you sleep is the ___.', o: ['kitchen', 'bedroom', 'bathroom'], a: 1, e: 'Bedroom es la habitación.' },
+          { t: 'mc', q: 'My mother’s brother is my ___.', o: ['uncle', 'cousin', 'grandfather'], a: 0, e: 'El hermano de tu mamá es tu tío: uncle.' },
+          { t: 'mc', q: 'The first meal of the day is ___.', o: ['dinner', 'lunch', 'breakfast'], a: 2, e: 'Breakfast es el desayuno.' },
+          { t: 'mc', q: '“Never” means ___.', o: ['siempre', 'nunca', 'a veces'], a: 1, e: 'Never es nunca.' },
+          { t: 'mc', q: 'The cat is ___ the table. (encima)', o: ['under', 'on', 'next'], a: 1, e: 'On es encima.' }
+        ] },
+      { titulo: 'Gramática', corto: 'Gramática', hab: 'Gramática',
+        instr: 'Elige la opción que completa bien la oración.',
+        items: [
+          { t: 'mc', q: 'We ___ from Chía.', o: ['am', 'is', 'are'], a: 2, e: 'Con we se usa are.' },
+          { t: 'mc', q: 'My father ___ in a bank.', o: ['work', 'works', 'working'], a: 1, e: 'He (my father): works.' },
+          { t: 'mc', q: '___ she speak French?', o: ['Do', 'Does', 'Is'], a: 1, e: 'Con she se pregunta con does.' },
+          { t: 'mc', q: 'They ___ like vegetables.', o: ['doesn’t', 'don’t', 'aren’t'], a: 1, e: 'Con they: don’t.' },
+          { t: 'mc', q: 'There ___ a park near my house.', o: ['is', 'are', 'be'], a: 0, e: 'Un parque: there is.' },
+          { t: 'mc', q: 'I want ___ apple.', o: ['a', 'an', 'two'], a: 1, e: 'Apple empieza con sonido de vocal: an.' },
+          { t: 'mc', q: 'Listen! The baby ___.', o: ['cries', 'is crying', 'cry'], a: 1, e: 'Listen! indica que pasa ahora: is crying.' },
+          { t: 'mc', q: '___ is your birthday? — In June.', o: ['Where', 'Who', 'When'], a: 2, e: 'When pregunta por el tiempo.' }
+        ] },
+      { titulo: 'Completa la oración', corto: 'Completa', hab: 'Gramática',
+        instr: 'Escribe la palabra que falta. Una sola palabra por espacio.',
+        items: [
+          { t: 'fill', q: 'He ___ two sisters. (have)', a: ['has'], e: 'Con he, have cambia a has.' },
+          { t: 'fill', q: 'I ___ not tired. (be)', a: ['am'], e: 'Con I se usa am.' },
+          { t: 'fill', q: 'She ___ to school by bus every day. (go)', a: ['goes'], e: 'Con she, go cambia a goes.' },
+          { t: 'fill', q: 'There ___ three chairs in the kitchen. (be)', a: ['are'], e: 'Plural: there are.' },
+          { t: 'fill', q: 'We ___ watching a film right now. (be)', a: ['are'], e: 'Presente continuo con we: are watching.' }
+        ] },
+      { titulo: 'Une las palabras', corto: 'Une', hab: 'Vocabulario',
+        instr: 'Elige el significado de cada palabra en el menú.',
+        items: [
+          { t: 'match', q: 'Une cada palabra con su significado.',
+            pares: [
+              ['grandmother', 'your father’s or mother’s mother'],
+              ['spoon', 'you use it to eat soup'],
+              ['always', 'every time'],
+              ['bathroom', 'the room with a shower'],
+              ['sometimes', 'not always, not never']
+            ],
+            e: 'Repasa los temas Familia, A/An y la comida y Presente simple.' }
+        ] },
+      { titulo: 'Ordena la oración', corto: 'Ordena', hab: 'Gramática',
+        instr: 'Toca las palabras en el orden correcto para formar la oración.',
+        items: [
+          { t: 'order', q: 'Forma una pregunta.', fichas: ['does', 'What', 'study', 'she', '?'], a: 'What does she study?', e: 'Wh- + does + sujeto + verbo.' },
+          { t: 'order', q: 'Forma una oración en presente continuo.', fichas: ['are', 'They', 'football', 'playing'], a: 'They are playing football', e: 'Sujeto + are + verbo-ing.' },
+          { t: 'order', q: 'Forma una oración negativa.', fichas: ['doesn’t', 'He', 'coffee', 'drink', '.'], a: 'He doesn’t drink coffee.', e: 'Sujeto + doesn’t + verbo sin -s.' }
+        ] },
+      { titulo: 'Lectura', corto: 'Lectura', hab: 'Lectura',
+        instr: 'Lee el texto y responde. Puedes mirar el texto cuando quieras.',
+        textoTitulo: 'My house',
+        texto: [
+          'My name is Sofía and I am 20 years old. I live in a small house in Cajicá with my parents and my little brother, Tomás.',
+          'There are two bedrooms, a kitchen and a living room. There isn’t a garden, but there is a big window. Every morning my father makes breakfast. Right now Tomás is playing video games and I am reading this text!'
+        ],
+        items: [
+          { t: 'mc', q: 'Sofía lives in a big house.', o: ['True', 'False'], a: 1, e: 'Dice: I live in a small house.' },
+          { t: 'mc', q: 'How many bedrooms are there?', o: ['One', 'Two', 'Three'], a: 1, e: 'There are two bedrooms.' },
+          { t: 'mc', q: 'Who makes breakfast?', o: ['Her mother', 'Her father', 'Tomás'], a: 1, e: 'Every morning my father makes breakfast.' },
+          { t: 'mc', q: 'What is Tomás doing now?', o: ['He is reading.', 'He is cooking.', 'He is playing video games.'], a: 2, e: 'Right now Tomás is playing video games.' }
+        ] },
+      { titulo: 'Escucha', corto: 'Escucha', hab: 'Escucha',
+        instr: 'Presiona Escuchar y responde. Cada audio se puede oír dos veces.',
+        items: [
+          { t: 'mc', q: '¿De dónde es Mark?',
+            audio: [{ t: 'Hello, my name is Mark. I am from Canada and I am a teacher.', v: 'm' }],
+            o: ['De Colombia', 'De Canadá', 'De Inglaterra'], a: 1, e: 'Dice: I am from Canada.' },
+          { t: 'fill', q: 'Completa: There are ___ people in my family. (escribe el número con letras en inglés)',
+            audio: [{ t: 'There are five people in my family: my parents, my two sisters and me.', v: 'f' }],
+            a: ['five', '5'], e: 'Escuchaste five.' },
+          { t: 'mc', q: 'What is she doing?',
+            audio: [{ t: 'Where is Laura?', v: 'm' }, { t: 'She is in the kitchen. She is cooking lunch.', v: 'f' }],
+            o: ['She is sleeping.', 'She is cooking lunch.', 'She is studying.'], a: 1, e: 'She is cooking lunch.' }
+        ] }
+    ]
+  };
+  </script>
+  <script src="/static/js/progreso.js"></script>
+  <script src="/static/js/fiesta.js"></script>
+  <script src="/static/js/diagnostico.js"></script>
+</body>
+</html>
